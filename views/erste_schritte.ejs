@@ -5,8 +5,56 @@
 	</head>
 	<body>
 		<div>
-
+			<header>
+				<button type="button" name="profil">Profil</button>
+				<button type="button" name="Ausloggen">Logout</button>
 		</div>
+
+		<div>
+			<p> Schön, dass du da bist! </p>
+			<p> Gib uns nähere angaben: </p>
+		</div>
+
+		<div>
+			<form>
+				<label for="text">Wohnort</label>
+				<input type="text" id="wohnort">
+			</form>
+		</div>
+
+		<div>
+			<p> Wofür interessierst du dich? </p>
+		</div>
+
+		<div>
+			<form>
+				<fieldset>
+					<ul>
+						<li>
+							<label>
+								<input type="checkbox" name="interesse" value="theater" id="check1">Theater</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" name="interesse" value="musik" id="check2">Musik</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" name="interesse" value="party" id="check3">party</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" name="interesse" value="sport" id="check4">Sport</label>
+						</li>
+					</ul>
+				</fieldset>
+			</form>
+		</div>
+
+		<div>
+			<input type="submit" value="speichern" name="Speichern">
+		</div>
+
 	</body>
 </html>
 
