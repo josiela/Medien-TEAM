@@ -5,6 +5,34 @@
 	</head>
 
 	<body>
+		<div>
+			<h2>Schicken Sie uns was Schickes!</h2>
+			<form method="post" enctype="multipart/form-data">
+					<label> Wählen Sie eine Textdatei (*.txt, *.html usw.) von Ihrem Rechner aus.
+					<input name="datei"
+					type="file" size="50" accept="text/*"> </label>
+				</form>
+			</div>
+
+			<div>
+				<form>
+					<label for="text">Benutzername: </label>
+					<input type="text" id="username">
+				</form>
+				<form>
+					<label for="text">Wohnort: </label>
+					<input type="text" id="wohnort">
+				</form>
+				<form>
+					<label for="text">Kurzbeschreibung: </label>
+					<input type="text" id="info">
+				</form>
+			</div>
+
+			<div>
+				<input type="submit" value="speichern" name="Speichern">
+			</div>
+
 <!--
 	"Bild hochladen - button"
 
