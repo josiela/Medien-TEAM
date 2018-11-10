@@ -1,7 +1,5 @@
 //Initialisiere Datenbanken
 const sqlite3 = require('sqlite3').verbose();
-let db1 = new sqlite3.Database('users.db');
-let db2 = new sqlite3.Database('events.db');
 
 // Express.js Webserver
 const express = require('express');
@@ -63,8 +61,17 @@ app.get('/profil_bearbeiten', function(req, res) {
 app.get('/profil', function(req, res) {
   res.render('profil');
 });
-app.get('/registrierung', function(req, res) {
-  res.render('registrierung');
+app.all('/registrierung', function(req, res) {
+	const db = new sqlite3.Database('meetyourcity.db');
+	const { email, password, username } = req.body;
+	// validierung
+	db.run(`INSERT INTO users(email,password,username) VALUES(?, ?, ?)`, [email, password, username], function(err) {
+		 if (err) {
+			 return console.log(err.message);
+		 }
+	 });
+   res.render('registrierung');
+	 db.close();
 });
 
 app.get('/start-login', function(req, res) {
