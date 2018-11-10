@@ -61,6 +61,7 @@ app.get('/profil_bearbeiten', function(req, res) {
 app.get('/profil', function(req, res) {
   res.render('profil');
 });
+
 app.all('/registrierung', function(req, res) {
 	const db = new sqlite3.Database('meetyourcity.db');
 	const { email, password, username } = req.body;
@@ -76,6 +77,13 @@ app.all('/registrierung', function(req, res) {
 
 app.get('/start-login', function(req, res) {
   res.render('start-login');
+	db.run(`SELECT * FROM users WHERE username=?`, [req.body.username, req.body.password], function(err) {
+		 if (err) {
+			 return console.log(err.message);
+		 }
+	 });
+   res.render('registrierung');
+	 db.close();
 });
 app.get('/veranstaltung_unterseite', function(req, res) {
   res.render('veranstaltung_unterseite');
