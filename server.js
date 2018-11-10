@@ -39,3 +39,37 @@ app.listen(3000, function(){
 app.get('/start-login', function(req, res) {
   res.render('start-login');
 });
+
+app.get('/erste_schritte', function(req, res) {
+  res.render('erste_schritte');
+});
+
+
+app.get('/home', function(req, res) {
+  res.render('home');
+});
+
+app.get('/loginerror', function(req, res) {
+  res.render('loginerror');
+});
+
+app.get('/neue_Veranstaltung', function(req, res) {
+  res.render('neue_Veranstaltung');
+});
+
+app.get('/profil_bearbeiten', function(req, res) {
+  res.render('profil_bearbeiten');
+});
+app.get('/profil', function(req, res) {
+  res.render('profil');
+});
+app.get('/registrierung', function(req, res) {
+  res.render('registrierung');
+});
+
+app.get('/start-login', function(req, res) {
+  res.render('start-login');
+});
+app.get('/veranstaltung_unterseite', function(req, res) {
+  res.render('veranstaltung_unterseite');
+});
