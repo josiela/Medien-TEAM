@@ -19,6 +19,14 @@
     "sqlite3": "^4.0.3"
   },
   "devDependencies": {
-    "nodemon": "^1.18.5"
-  }
+    "nodemon": "^1.18.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josiela/Medien-TEAM.git"
+  },
+  "bugs": {
+    "url": "https://github.com/josiela/Medien-TEAM/issues"
+  },
+  "homepage": "https://github.com/josiela/Medien-TEAM#readme"
 }
