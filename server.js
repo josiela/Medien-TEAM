@@ -34,15 +34,30 @@ app.listen(3000, function(){
 
 //---------------------------------------------//
 
-app.get('/start-login', function(req, res) {
-  res.render('start-login');
-});
-
 app.get('/erste_schritte', function(req, res) {
   res.render('erste_schritte');
 });
 
+//app.post('/erste_schritte', function(req, res) {
+//	const db = new sqlite3.Database()
+//	const {wohnort, interessen} = req.body;
 
+//	db.run(`INSERT INTO profilinfo()`)
+//});
+
+//app.post('/registrierung', function(req, res) {
+//	const db = new sqlite3.Database('meetyourcity.db');
+//	const { email, password, username } = req.body;
+		// validierung
+//	db.run(`INSERT INTO users(email,password,username) VALUES(?, ?, ?)`, [email, password, username], function(err) {
+//		 if (err) {
+//			 return console.log(err.message);
+//		 }
+//		 return res.redirect('/erste_schritte')
+//	 });
+//	 db.close();
+//});
+//============================================//
 app.get('/home', function(req, res) {
   res.render('home');
 });
@@ -62,18 +77,41 @@ app.get('/profil', function(req, res) {
   res.render('profil');
 });
 
-app.all('/registrierung', function(req, res) {
+//----------DB Registrierung--------------//
+
+app.get('/registrierung', function(req, res) {
+	res.render('registrierung');
+});
+
+app.post('/registrierung', function(req, res) {
 	const db = new sqlite3.Database('meetyourcity.db');
 	const { email, password, username } = req.body;
-	// validierung
+		// validierung
 	db.run(`INSERT INTO users(email,password,username) VALUES(?, ?, ?)`, [email, password, username], function(err) {
 		 if (err) {
 			 return console.log(err.message);
 		 }
+		 return res.redirect('/erste_schritte')
 	 });
-   res.render('registrierung');
 	 db.close();
 });
+
+//app.all('/registrierung', function(req, res) {
+//	const db = new sqlite3.Database('meetyourcity.db');
+//	const { email, password, username } = req.body;
+	// validierung
+//	db.run(`INSERT INTO users(email,password,username) VALUES(?, ?, ?)`, [email, password, username], function(err) {
+//		 if (err) {
+//			 return console.log(err.message);
+//		 }
+//	 });
+//   res.render('registrierung');
+//	 db.close();
+//});
+
+//=======================================//
+
+//----------DB Login---------------------//
 
 app.get('/start-login', function(req, res) {
   res.render('start-login');
@@ -92,6 +130,7 @@ app.post('/start-login', function(req, res) {
 	 });
 	 db.close();
 });
+//=========================================//
 
 
 app.get('/veranstaltung_unterseite', function(req, res) {
