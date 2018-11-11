@@ -77,14 +77,23 @@ app.all('/registrierung', function(req, res) {
 
 app.get('/start-login', function(req, res) {
   res.render('start-login');
-	db.run(`SELECT * FROM users WHERE username=?`, [req.body.username, req.body.password], function(err) {
+});
+
+app.post('/start-login', function(req, res) {
+	const db = new sqlite3.Database('meetyourcity.db');
+	db.get(`SELECT * FROM users WHERE username=? AND password=?`, [req.body.username, req.body.password], function(err, row) {
 		 if (err) {
 			 return console.log(err.message);
 		 }
+		 if (row) {
+			 return res.redirect('/home')
+		 }
+		 return res.redirect('/loginerror')
 	 });
-   res.render('registrierung');
 	 db.close();
 });
+
+
 app.get('/veranstaltung_unterseite', function(req, res) {
   res.render('veranstaltung_unterseite');
 });
