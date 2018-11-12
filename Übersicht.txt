@@ -1,0 +1,40 @@
+Veranstaltung:
+-	Von der HomeSeite Veranstaltung anklicken und auf Veranstaltungsunterseite geleitet werden
+-	Bild sehen, Name der Veranstaltung, Ort, Datum Zeit
+
+-	Link von der Startseite und von der Unterseite: Neue Veranstaltung erstellen  Führt zu Veranstaltung erstellen Unterseite
+
+Veranstaltung erstellen
+-	Bild hochladen (und in Datenbank speichern?)
+-	Name der Veranstaltung angeben und in Datenbank speichern
+-	Ort angeben und in Datenbank speichern
+-	Datum und Uhrzeit in Datenbank speichern
+
+-	Speichern (Submit-Button)  Führt zur offiziellen Ansicht der Veranstaltung (Veranstaltungsunterseite)
+
+Home Seite
+-	Übersicht der Veranstaltungen in deiner Umgebung (geordnet nach im Profil angegebenen Wohnort und angegebene Interessen)
+-	Getrennt in
+  Nehme ich Teil	| Vorschläge
+-	Checkboxkasten zu Interessen, die angepasst werden können  Veranstaltungen ordnen sich neu
+
+Profil
+-	Platzhalterbild wenn noch keins eingestellt wurde, ansonsten das selbst eingestellte Bild
+-	Benutzername der bei der Registrierung angegeben wurde
+-	Wohnort: Angegebener Wohnort
+-	Über mich: Beschreibender Text, den man selbst angeben kann
+-	Link der zur „Profil-bearbeiten“-Seite führt
+
+Profil bearbeiten
+-	Profilbild hochladen und speichern
+-	Wohnort ändern
+-	Kurzbeschreibung (Textfeld, vielleicht mit begrenzter Ziffernzahl?)
+-	Speicher (Submit) Button, der die eingegebenen Daten in die Datenbank übernimmt und sie im Profil ausgibt
+
+Ausloggen
+-	Sessionvariable wird gelöscht
+-	Weiterleitung zur start-login Seite
+
+Erste Schritte
+-	Wohnort angeben  Dropdown-Menü und in Datenbank speichern
+-	Interessen ankreuzen (Checkbox) und in Datenbank speichern
