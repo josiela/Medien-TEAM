@@ -111,7 +111,7 @@ app.get('/profil_bearbeiten', function(req, res) {
 });
 
 app.get('/profil', function(req, res) {
-	res.render('profil_bearbeiten');
+	res.render('profil');
 });
 
 app.get('/registrierung', function(req, res) {
