@@ -1,15 +1,15 @@
-Notwendige Installationen für die Funktion:
+Notwendige Installationen fÃ¼r die Funktion:
 
-Node.js und Sqlite müssen vorliegen.
+Node.js und Sqlite mÃ¼ssen vorliegen.
 Node.js hier: https://nodejs.org/de/download/
 Sqlite hier: https://www.sqlite.org/download.html
--> Bei Sqlite den dritten Link unter "Precompiled Binaries for Windows" auswählen
+-> Bei Sqlite den dritten Link unter "Precompiled Binaries for Windows" auswÃ¤hlen
 Anleitung zur Installation von Sqlite: http://www.sqlitetutorial.net/download-install-sqlite/
 
 
-Befehle für die Konsole, um alle wichtigen Pakete für die Web-App im Ordner zu installieren:
+Befehle fÃ¼r die Konsole, um alle wichtigen Pakete fÃ¼r die Web-App im Ordner zu installieren:
 
-Möglicherweise vorher npm init um eine eigene package.json anzulegen, falls die mitgedownloadete Version nicht funktioniert/vorliegt. Dabei nicht vergessen in die package.json noch die nötigen Änderungen zu schreiben um die Verwendung von nodemon möglich zu machen. Der Bereich "scripts" in der package.json sollte dann so aussehen:
+MÃ¶glicherweise vorher npm init um eine eigene package.json anzulegen, falls die mitgedownloadete Version nicht funktioniert/vorliegt. Dabei nicht vergessen in die package.json noch die nÃ¶tigen Ã„nderungen zu schreiben um die Verwendung von nodemon mÃ¶glich zu machen. Der Bereich "scripts" in der package.json sollte dann so aussehen:
 
 "scripts": {
     
@@ -31,3 +31,5 @@ npm install nodemon --save-dev
 npm install sqlite3 --save
 npm install bcrypt --save
 npm install express-session --save
+
+node ./bootstrap vor dem Starten der server.js
