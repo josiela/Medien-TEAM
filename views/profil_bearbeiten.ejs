@@ -2,24 +2,25 @@
 <html>
 	<head>
 		<title>Profil bearbeiten</title>
+		<link rel="stylesheet" type="text/css" href="/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	</head>
-
-	<header>
-		<a href="/home">Startseite</a>
-		<a href="/profil">Profil</a>
-		<a href="/start-login">Ausloggen</a>
-	</header>
-
 	<body>
 		<div>
-			<h2>Zeig uns wie du aussiehst!</h2>
-			<form method="post" enctype="multipart/form-data">
+			<div class="header">
+				<a href="/"><img class="logo" src="images/Logo.png" alt="Logo"></a>
+				<a href="/" class="header-text"><h1>Meet Your City</h1></a>
+			</div>
+			<div class="content">
+				<a href="/home">Startseite</a>
+				<a href="/profil">Profil</a>
+				<a href="/start-login">Ausloggen</a>
+				<h2>Zeig uns wie du aussiehst!</h2>
+				<form method="post" enctype="multipart/form-data">
 					<label> Wählen Sie eine Bilddatei (*.png, *.jpg, etc.) von Ihrem Rechner aus.
 					<input name="datei"
 					type="file" size="50" accept="text/*"> </label>
 				</form>
-			</div>
-
 			<div>
 				<form>
 					<label for="text">Benutzername: </label>
@@ -34,11 +35,11 @@
 					<input type="text" id="info">
 				</form>
 			</div>
-
 			<div>
 				<input type="submit" value="speichern" name="Speichern">
 			</div>
-
+		</div>
+	</div>
 <!--
 	"Bild hochladen - button"
 

@@ -2,32 +2,32 @@
 <html>
 	<head>
 		<title>Meet your City</title>
+		<link rel="stylesheet" type="text/css" href="/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	</head>
 	<body>
 		<div>
-			<h1>Willkommen bei Meet Your City</h1>
-		</div>
-
+			<div class="header">
+				<a href="/"><img class="logo" src="images/Logo.png" alt="Logo"></a>
+				<a href="/" class="header-text"><h1>Meet Your City</h1></a>
+			</div>
 			<!-- Headpart: Oberer Teil der Website mit Logo, Schriftzug etc.
 			<form>
 			<input class="MyButton" type="button" value="Your Text Here" onclick="window.location.href='http://www.hyperlinkcode.com/button-links.php'" />
 			</form>
 				Willkommens-Nachricht -->
-		<h3>Lerne hier deine Stadt kennen!</h3>
-
-		<a href="/registrierung">Registrieren</a>
-
-	 <h3> Hast du schon einen Account? Log dich hier ein: </h3>
-
-		<form action="sendLogin" method="post">
-			Benutzername: <input type="text" name="username"> <br>
-			Passwort: <input type="password" name="password"> <br>
-			<div>
-				<input type="submit" value="Login"/>
+			<div class="content">
+				<h3>Lerne hier deine Stadt kennen!</h3>
+				<a href="/registrierung">Registrieren</a>
+	 			<h3> Hast du schon einen Account? Log dich hier ein:</h3>
+				<form action="sendLogin" method="post">
+					Benutzername: <input type="text" name="username"> <br>
+					Passwort: <input type="password" name="password"> <br>
+					<div>
+						<input type="submit" value="Login"/>
+					</div>
+				</form>
 			</div>
-		</form>
-
-
-
+		</div>
 	</body>
 </html>
