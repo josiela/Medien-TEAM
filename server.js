@@ -102,12 +102,24 @@ app.get('/veranstaltung_unterseite', function(req, res) {
 	res.render('veranstaltung_unterseite');
 });
 
+app.get('/neue_Veranstaltung', function(req, res) {
+	res.render('neue_Veranstaltung');
+});
 
-//----------DB Registrierung--------------//
+app.get('/profil_bearbeiten', function(req, res) {
+	res.render('profil_bearbeiten');
+});
+
+app.get('/profil', function(req, res) {
+	res.render('profil_bearbeiten');
+});
 
 app.get('/registrierung', function(req, res) {
 	res.render('registrierung');
 });
+
+
+//----------DB Registrierung--------------//
 
 app.post('/registrierung', function(req, res) {
 	const { email, password, username } = req.body;
