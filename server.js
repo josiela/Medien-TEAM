@@ -94,6 +94,15 @@ app.get('/loginerror', function(req, res) {
 	res.render('loginerror');
 });
 
+app.get('/erste_schritte', function(req, res) {
+	res.render('erste_schritte');
+});
+
+app.get('/veranstaltung_unterseite', function(req, res) {
+	res.render('veranstaltung_unterseite');
+});
+
+
 //----------DB Registrierung--------------//
 
 app.get('/registrierung', function(req, res) {
