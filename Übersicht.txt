@@ -15,7 +15,7 @@ Veranstaltung erstellen
 Home Seite
 -	Übersicht der Veranstaltungen in deiner Umgebung (geordnet nach im Profil angegebenen Wohnort und angegebene Interessen)
 -	Getrennt in
-  Nehme ich Teil	| Vorschläge
+  Nehme ich Teil | Vorschläge
 -	Checkboxkasten zu Interessen, die angepasst werden können  Veranstaltungen ordnen sich neu
 
 Profil
