@@ -21,9 +21,9 @@ app.use(express.static(__dirname + "/style"));
 // Sessionvariablen
 const session = require('express-session');
 app.use(session({
-	secret: 'example',
-	resave: false,
-	saveUninitialized: true
+	secret: 'meetyourcity',
+  resave: true,
+  saveUninitialized: false,
 }));
 
 // Passwort Verschlüsselung
@@ -34,18 +34,21 @@ app.listen(3000, function(){
 	console.log("listening on 3000");
 });
 
+let requiresLogin = function(req, res, next) {
+  if (!req.session.user) {
+		res.redirect('/start-login');
+    next();
+  }
+  return next();
+};
+
 //---------------------------------------------//
 
 //------------Sessionvariablen---------------//
-app.get('/', function(req, res) {
-	if(!req.session.authenticated) {
-		res.render('start-login');
-	}
-	else {
-		res.render('home', {
-			'username': req.session.user.name
-		});
-	}
+app.get('/', requiresLogin, function(req, res) {
+	res.render('home', {
+		'username': req.session.user.name
+	});
 });
 
 app.post('/sendLogin', function(req, res) {
@@ -59,7 +62,6 @@ app.post('/sendLogin', function(req, res) {
 				//hat geklappt
 				//Sessionvariable setzen
 				req.session['user'] = user;
-				req.session.authenticated = true;
 				res.redirect('/home');
 			}else{
 				//hat nicht geklappt weil password falsch
@@ -77,8 +79,11 @@ app.post('/sendLogin', function(req, res) {
 });
 
 app.get('/logout', function(req, res){
-	delete req.session['user'];
-	res.redirect('/start-login');
+	req.session.destroy(function (err) {
+	  if (err) return next(err)
+		req.session = null;
+	  res.redirect('/start-login');
+	});
 });
 //==========================================//
 
@@ -86,7 +91,7 @@ app.get('/start-login', function(req, res) {
 	res.render('start-login');
 });
 
-app.get('/home', function(req, res) {
+app.get('/home', requiresLogin, function(req, res) {
 	res.render('home');
 });
 
@@ -94,23 +99,23 @@ app.get('/loginerror', function(req, res) {
 	res.render('loginerror');
 });
 
-app.get('/erste_schritte', function(req, res) {
+app.get('/erste_schritte', requiresLogin, function(req, res) {
 	res.render('erste_schritte');
 });
 
-app.get('/veranstaltung_unterseite', function(req, res) {
+app.get('/veranstaltung_unterseite', requiresLogin, function(req, res) {
 	res.render('veranstaltung_unterseite');
 });
 
-app.get('/neue_Veranstaltung', function(req, res) {
+app.get('/neue_Veranstaltung', requiresLogin, function(req, res) {
 	res.render('neue_Veranstaltung');
 });
 
-app.get('/profil_bearbeiten', function(req, res) {
+app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 	res.render('profil_bearbeiten');
 });
 
-app.get('/profil', function(req, res) {
+app.get('/profil', requiresLogin, function(req, res) {
 	res.render('profil');
 });
 
