@@ -132,8 +132,6 @@ app.post('/registrierung', function(req, res) {
 		 return res.redirect('/profil_bearbeiten');
 	 });
 });
-
-
 //=======================================//
 //Called when a URL is called that is not implemented
 app.use((request, response, next) => {
