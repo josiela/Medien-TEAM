@@ -129,11 +129,11 @@ app.get('/registrierung', function(req, res) {
 app.post('/registrierung', function(req, res) {
 	const { email, password, username } = req.body;
 		// validierung
-	db.run(`INSERT INTO users(email,password,username) VALUES(?, ?, ?)`, [email, password, username], function(err) {
+	db.run(`INSERT INTO users(email,password,username,wohnort) VALUES(?, ?, ?, ?)`, [email, password, username, wohnort], function(err) {
 		 if (err) {
 			 return console.log(err.message);
 		 }
-		 return res.redirect('/erste_schritte');
+		 return res.redirect('/home');
 	 });
 });
 

@@ -7,7 +7,7 @@ const db = new sqlite3.Database('meetyourcity.db');
 db.exec('DROP TABLE IF EXISTS users');
 
 // Create Users Table
-db.exec('CREATE TABLE users(email text, password text, username text)');
+db.exec('CREATE TABLE users(email text, password text, username text, wohnort text)');
 
 
 db.close();
