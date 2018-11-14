@@ -56,6 +56,9 @@ app.post('/sendLogin', function(req, res) {
 	const user = req.body["username"];
 	const password = req.body["password"];
 	db.get(`SELECT * FROM users WHERE username='${user}'`, function(err, row) {
+		if(err){
+			console.error(err.message);
+		}
 		if (row != undefined) {
 			//Wenn ja, schau ob das Password richtig ist
 			if(password == row.password) {
@@ -72,9 +75,6 @@ app.post('/sendLogin', function(req, res) {
 			res.redirect('/loginerror');
 		}
 		//Falls ein Fehler auftritt in der Abfrage, gebe ihn aus
-		if(err){
-			console.error(err.message);
-		}
 	});
 });
 
@@ -128,8 +128,10 @@ app.post('/registrierung', function(req, res) {
 	db.run(`INSERT INTO users(email,password,username,wohnort) VALUES(?, ?, ?, ?)`, [email, password, username, wohnort], function(err) {
 		 if (err) {
 			 return console.log(err.message);
-		 }
-		 return res.redirect('/profil_bearbeiten');
+		 }else{
+		 		req.session.user = username;
+		 		return res.redirect('/profil_bearbeiten');
+			}
 	 });
 });
 //=======================================//
