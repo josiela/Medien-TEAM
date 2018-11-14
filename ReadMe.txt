@@ -32,4 +32,4 @@ npm install sqlite3 --save
 npm install bcrypt --save
 npm install express-session --save
 
-node ./bootstrap vor dem Starten der server.js
+node ./bootstrap vor dem Starten der server.js (Muss nur ein einziges Mal ausgeführt werden)
