@@ -45,9 +45,7 @@ let requiresLogin = function(req, res, next) {
 
 //------------Sessionvariablen---------------//
 app.get('/', requiresLogin, function(req, res) {
-	res.render('home', {
-		'username': req.session.user.name
-	});
+	res.redirect('home');
 });
 
 app.post('/sendLogin', function(req, res) {
@@ -64,6 +62,9 @@ app.post('/sendLogin', function(req, res) {
 				//hat geklappt
 				//Sessionvariable setzen
 				req.session['user'] = user;
+				req.session['email'] = row.email;
+				req.session['location'] = row.wohnort;
+
 				res.redirect('/home');
 			}else{
 				//hat nicht geklappt weil password falsch
@@ -111,7 +112,16 @@ app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 });
 
 app.get('/profil', requiresLogin, function(req, res) {
-	res.render('profil');
+	!req.session.user ? res.redirect('/start-login') : null;
+	!req.session.email ? req.session['email'] = '' : null;
+	!req.session.location ? req.session['location'] = '' : null;
+
+
+	res.render('profil', {
+		user: req.session.user,
+		email: req.session.email,
+		location: req.session.location
+	});
 });
 
 app.get('/registrierung', function(req, res) {
