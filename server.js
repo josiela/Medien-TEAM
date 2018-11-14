@@ -7,8 +7,8 @@ const express = require('express');
 const app = express()
 
 // Body-Parser
-const bodyParser= require('body-parser')
-app.use(bodyParser.urlencoded({extended: true}))
+const bodyParser= require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
 
 // EJS
 app.engine('.ejs', require('ejs').__express);
@@ -133,10 +133,7 @@ app.post('/registrierung', function(req, res) {
 			}
 	 });
 });
-<<<<<<< HEAD
 
-=======
->>>>>>> e2c5ca7d6ffcf77699c05f238e9a6c09981d2306
 //=======================================//
 //Called when a URL is called that is not implemented
 app.use((request, response, next) => {
