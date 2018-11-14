@@ -36,6 +36,7 @@ app.listen(3000, function(){
 let requiresLogin = function(req, res, next) {
   if (!req.session.user) {
 		res.redirect('/start-login');
+		//wofür? Hierdurch treten Fehler auf in der Powershell wenn man auf der Startseite ist
     next();
   }
   return next();
@@ -64,6 +65,7 @@ app.post('/sendLogin', function(req, res) {
 				req.session['user'] = user;
 				req.session['email'] = row.email;
 				req.session['location'] = row.wohnort;
+				req.session['info'] = row.info;
 
 				res.redirect('/home');
 			}else{
@@ -111,16 +113,20 @@ app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 	res.render('profil_bearbeiten');
 });
 
+
+//Infos werden geholt und in der Sitzung gespeichert
 app.get('/profil', requiresLogin, function(req, res) {
 	!req.session.user ? res.redirect('/start-login') : null;
 	!req.session.email ? req.session['email'] = '' : null;
 	!req.session.location ? req.session['location'] = '' : null;
+	!req.session.info ? req.session['info'] = '' : null;
 
-
+//Darstellen auf der Seite
 	res.render('profil', {
 		user: req.session.user,
 		email: req.session.email,
-		location: req.session.location
+		location: req.session.location,
+		info: req.session.info
 	});
 });
 
