@@ -20,9 +20,9 @@ app.use(express.static(__dirname + "/style"));
 // Sessionvariablen
 const session = require('express-session');
 app.use(session({
-	secret: 'example',
-	resave: false,
-	saveUninitialized: true
+	secret: 'meetyourcity',
+  resave: true,
+  saveUninitialized: false,
 }));
 
 // Passwort Verschlüsselung
@@ -33,18 +33,21 @@ app.listen(3000, function(){
 	console.log("listening on 3000");
 });
 
+let requiresLogin = function(req, res, next) {
+  if (!req.session.user) {
+		res.redirect('/start-login');
+    next();
+  }
+  return next();
+};
+
 //---------------------------------------------//
 
 //------------Sessionvariablen---------------//
-app.get('/', function(req, res) {
-	if(!req.session.authenticated) {
-		res.render('start-login');
-	}
-	else {
-		res.render('home', {
-			'username': req.session.user.name
-		});
-	}
+app.get('/', requiresLogin, function(req, res) {
+	res.render('home', {
+		'username': req.session.user.name
+	});
 });
 
 app.post('/sendLogin', function(req, res) {
@@ -52,13 +55,15 @@ app.post('/sendLogin', function(req, res) {
 	const user = req.body["username"];
 	const password = req.body["password"];
 	db.get(`SELECT * FROM users WHERE username='${user}'`, function(err, row) {
+		if(err){
+			console.error(err.message);
+		}
 		if (row != undefined) {
 			//Wenn ja, schau ob das Password richtig ist
 			if(password == row.password) {
 				//hat geklappt
 				//Sessionvariable setzen
 				req.session['user'] = user;
-				req.session.authenticated = true;
 				res.redirect('/home');
 			}else{
 				//hat nicht geklappt weil password falsch
@@ -69,15 +74,15 @@ app.post('/sendLogin', function(req, res) {
 			res.redirect('/loginerror');
 		}
 		//Falls ein Fehler auftritt in der Abfrage, gebe ihn aus
-		if(err){
-			console.error(err.message);
-		}
 	});
 });
 
 app.get('/logout', function(req, res){
-	delete req.session['user'];
-	res.redirect('/start-login');
+	req.session.destroy(function (err) {
+	  if (err) return next(err)
+		req.session = null;
+	  res.redirect('/start-login');
+	});
 });
 //==========================================//
 
@@ -85,7 +90,7 @@ app.get('/start-login', function(req, res) {
 	res.render('start-login');
 });
 
-app.get('/home', function(req, res) {
+app.get('/home', requiresLogin, function(req, res) {
 	res.render('home');
 });
 
@@ -93,23 +98,19 @@ app.get('/loginerror', function(req, res) {
 	res.render('loginerror');
 });
 
-app.get('/erste_schritte', function(req, res) {
-	res.render('erste_schritte');
-});
-
-app.get('/veranstaltung_unterseite', function(req, res) {
+app.get('/veranstaltung_unterseite', requiresLogin, function(req, res) {
 	res.render('veranstaltung_unterseite');
 });
 
-app.get('/neue_Veranstaltung', function(req, res) {
+app.get('/neue_Veranstaltung', requiresLogin, function(req, res) {
 	res.render('neue_Veranstaltung');
 });
 
-app.get('/profil_bearbeiten', function(req, res) {
+app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 	res.render('profil_bearbeiten');
 });
 
-app.get('/profil', function(req, res) {
+app.get('/profil', requiresLogin, function(req, res) {
 	res.render('profil');
 });
 
@@ -121,16 +122,21 @@ app.get('/registrierung', function(req, res) {
 //----------DB Registrierung--------------//
 
 app.post('/registrierung', function(req, res) {
-	const { email, password, username } = req.body;
+	const { email, password, username, wohnort } = req.body;
 		// validierung
-	db.run(`INSERT INTO users(email,password,username) VALUES(?, ?, ?)`, [email, password, username], function(err) {
+	db.run(`INSERT INTO users(email,password,username,wohnort) VALUES(?, ?, ?, ?)`, [email, password, username, wohnort], function(err) {
 		 if (err) {
 			 return console.log(err.message);
-		 }
-		 return res.redirect('/erste_schritte');
+		 }else{
+		 		req.session.user = username;
+		 		return res.redirect('/profil_bearbeiten');
+			}
 	 });
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> e2c5ca7d6ffcf77699c05f238e9a6c09981d2306
 //=======================================//
 //Called when a URL is called that is not implemented
 app.use((request, response, next) => {
