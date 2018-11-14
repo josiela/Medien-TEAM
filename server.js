@@ -99,10 +99,6 @@ app.get('/loginerror', function(req, res) {
 	res.render('loginerror');
 });
 
-app.get('/erste_schritte', requiresLogin, function(req, res) {
-	res.render('erste_schritte');
-});
-
 app.get('/veranstaltung_unterseite', requiresLogin, function(req, res) {
 	res.render('veranstaltung_unterseite');
 });
@@ -127,13 +123,13 @@ app.get('/registrierung', function(req, res) {
 //----------DB Registrierung--------------//
 
 app.post('/registrierung', function(req, res) {
-	const { email, password, username } = req.body;
+	const { email, password, username, wohnort } = req.body;
 		// validierung
 	db.run(`INSERT INTO users(email,password,username,wohnort) VALUES(?, ?, ?, ?)`, [email, password, username, wohnort], function(err) {
 		 if (err) {
 			 return console.log(err.message);
 		 }
-		 return res.redirect('/home');
+		 return res.redirect('/profil_bearbeiten');
 	 });
 });
 
