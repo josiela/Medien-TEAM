@@ -19,6 +19,16 @@ html {
   padding-left: 5px;
 }
 
+.header-right {
+  float: right;
+  padding-left: 10px;
+  padding-top: 2em;
+}
+
+.header-left {
+  float: left;
+}
+
 .content {
   padding: 0.75% 20% 0.75% 15%;
 }
@@ -27,6 +37,6 @@ a {
   text-decoration: none;
 }
 
-.logo {
+.icons {
   margin-bottom: -2px;
 }
