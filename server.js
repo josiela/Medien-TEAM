@@ -1,6 +1,5 @@
 //Initialisiere Datenbanken
 const sqlite3 = require('sqlite3').verbose();
-
 const db = new sqlite3.Database('meetyourcity.db');
 
 // Express.js Webserver
@@ -131,7 +130,6 @@ app.post('/registrierung', function(req, res) {
 		 return res.redirect('/erste_schritte');
 	 });
 });
-
 
 //=======================================//
 //Called when a URL is called that is not implemented
