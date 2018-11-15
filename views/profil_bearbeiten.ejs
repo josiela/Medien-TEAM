@@ -17,37 +17,26 @@
 				</div>
 			</div>
 			<div class="content">
-				<h2>Zeig uns wie du aussiehst!</h2>
-				<form method="post" enctype="multipart/form-data">
-					<label> Wählen Sie eine Bilddatei (*.png, *.jpg, etc.) von Ihrem Rechner aus.
-					<input name="datei"
-					type="file" size="50" accept="text/*"> </label>
-				</form>
-			<div>
-				<form>
-					<label for="text">Benutzername: </label>
-					<input type="text" id="username">
-				</form>
-				<form>
-					<label for="text">Wohnort: </label>
-					<input type="text" id="wohnort">
-				</form>
-				<form>
-					<label for="text">Kurzbeschreibung: </label>
-					<input type="text" id="info">
-				</form>
-			</div>
-			<div>
-				<input type="submit" value="speichern" name="Speichern">
-			</div>
+				<form action="profil_bearbeiten" method="post">
+					<h2>Zeig uns wie du aussiehst!</h2>
+		<!--	>		<form method="post" enctype="multipart/form-data">
+						<label> Wählen Sie eine Bilddatei (*.png, *.jpg, etc.) von Ihrem Rechner aus.
+						<input name="datei" type="file" size="50" accept="text/*">
+					</label>
+				</form> <-->
+					<div>
+						<label>Wohnort:
+							<input id="wohnort" type="text" name="wohnort">
+						</label>
+						<label>Kurzbeschreibung:
+							 <input id="info" type="text" name="info">
+						</label>
+						<div>
+							<input type="submit" value="speichern" />
+						</div>
+					</form>
+				</div>
 		</div>
 	</div>
-<!--
-	"Bild hochladen - button"
-
-	Eingabe: Benutzername
-	Eingabe: Wohnort
-	Eingabe: Kurzbeschreibung
--->
 	</body>
 </html>

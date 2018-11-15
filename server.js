@@ -116,18 +116,27 @@ app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 
 //Infos werden geholt und in der Sitzung gespeichert
 app.get('/profil', requiresLogin, function(req, res) {
-	!req.session.user ? res.redirect('/start-login') : null;
-	!req.session.email ? req.session['email'] = '' : null;
-	!req.session.location ? req.session['location'] = '' : null;
-	!req.session.info ? req.session['info'] = '' : null;
+	// !req.session.user ? res.redirect('/start-login') : null;
+	// !req.session.email ? req.session['email'] = '' : null;
+	// !req.session.location ? req.session['location'] = '' : null;
+	// !req.session.info ? req.session['info'] = '' : null;
+
+	db.get(`SELECT * FROM users WHERE username='${req.session.user}'`, function(err, row) {
+		if(err){
+			console.error(err.message);
+		}
+		if (row != undefined) {
+			res.render('profil', {
+				user: req.session.user,
+				email: row.email,
+				location: row.wohnort,
+				info: row.info,
+			});
+	} else {
+	}
+});
 
 //Darstellen auf der Seite
-	res.render('profil', {
-		user: req.session.user,
-		email: req.session.email,
-		location: req.session.location,
-		info: req.session.info
-	});
 });
 
 app.get('/registrierung', function(req, res) {
@@ -145,12 +154,27 @@ app.post('/registrierung', function(req, res) {
 			 return console.log(err.message);
 		 }else{
 		 		req.session.user = username;
+				req
 		 		return res.redirect('/profil_bearbeiten');
 			}
 	 });
 });
 
-//=======================================//
+app.post('/profil_bearbeiten', function(req, res) {
+	const {wohnort, info } = req.body;
+
+	//	validierung
+	db.run(`UPDATE users SET wohnort='${wohnort}', info='${info}' WHERE username='${req.session.user}';`, function(err) {
+		 if (err) {
+			 return console.log(err.message);
+		 }else{
+		 		return res.redirect('/profil');
+			}
+	 });
+});
+
+
+	//=======================================//
 //Called when a URL is called that is not implemented
 app.use((request, response, next) => {
 	response.status(404).render('error');
