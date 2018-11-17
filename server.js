@@ -109,6 +109,10 @@ app.get('/neue_Veranstaltung', requiresLogin, function(req, res) {
 	res.render('neue_Veranstaltung');
 });
 
+app.get('/erste_schritte', requiresLogin, function(req, res) {
+	res.render('erste_schritte');
+})
+
 app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 	res.render('profil_bearbeiten');
 });
@@ -155,14 +159,13 @@ app.post('/registrierung', function(req, res) {
 		 }else{
 		 		req.session.user = username;
 				req
-		 		return res.redirect('/profil_bearbeiten');
+		 		return res.redirect('/erste_schritte');
 			}
 	 });
 });
 
 app.post('/profil_bearbeiten', function(req, res) {
 	const {wohnort, info } = req.body;
-
 	//	validierung
 	db.run(`UPDATE users SET wohnort='${wohnort}', info='${info}' WHERE username='${req.session.user}';`, function(err) {
 		 if (err) {

@@ -31,22 +31,19 @@
 			<div>
 				<form>
 					<label for="text">Name der Veranstaltung: </label>
-					<input type="text" id="eventname">
+					<input type="text" id="eventname" required>
 					<label for="text">Ort der Veranstaltung: </label>
-					<input type="text" id="eventlocation">
+					<input type="text" id="eventlocation" required>
 					<label for="date">Datum: </label>
-					<input id="date" type="date" value="2018-11-01">
+					<input id="date" type="date" value="2018-11-01" required>
 					<!-- Javascript:
 					var dateControl = document.querySelector('input[type="date"]');
 					dateControl.value = '2017-06-01';
 					-->
 					<label for="time">Uhrzeit: </label>
-					<input id="time" type="time" name="time" value="15:00">
+					<input id="time" type="time" name="time" value="15:00" required>
 				</form>
 			</div>
-		<div>
-			<!--https://wiki.selfhtml.org/wiki/JavaScript/File_Upload-->
-		</div>
 		<div>
 			<input type="submit" value="Speichern" name="speichern">
 		</div>
