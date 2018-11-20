@@ -46,7 +46,7 @@ let requiresLogin = function(req, res, next) {
 
 //------------Sessionvariablen---------------//
 app.get('/', requiresLogin, function(req, res) {
-	res.redirect('home');
+	res.redirect('/home');
 });
 
 app.post('/sendLogin', function(req, res) {
