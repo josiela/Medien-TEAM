@@ -31,22 +31,27 @@
 			<div>
 				<form>
 					<label for="text">Name der Veranstaltung: </label>
-					<input type="text" id="eventname" required>
+					<input type="text" id="eventname" name="eventname" required>
 					<label for="text">Ort der Veranstaltung: </label>
-					<input type="text" id="eventlocation" required>
+					<input type="text" id="eventlocation" name="eventlocation" required>
 					<label for="date">Datum: </label>
-					<input id="date" type="date" value="2018-11-01" required>
+					<input id="date" type="date" value="2018-11-01" name="date" required>
 					<!-- Javascript:
 					var dateControl = document.querySelector('input[type="date"]');
 					dateControl.value = '2017-06-01';
 					-->
 					<label for="time">Uhrzeit: </label>
 					<input id="time" type="time" name="time" value="15:00" required>
-				</form>
+
+
+					<label for="text">Beschreibung der Veranstaltung: </label>
+					<input type="text" id="eventinfo" name="eventinfo" required>
+
 			</div>
 		<div>
 			<input type="submit" value="Speichern" name="speichern">
 		</div>
+		</form>
 <!--
 		Angeben:
 		"Büld"

@@ -158,7 +158,6 @@ app.post('/registrierung', function(req, res) {
 			 return console.log(err.message);
 		 }else{
 		 		req.session.user = username;
-				req
 		 		return res.redirect('/erste_schritte');
 			}
 	 });
@@ -176,7 +175,17 @@ app.post('/profil_bearbeiten', function(req, res) {
 	 });
 });
 
-
+app.post('/neue_Veranstaltung', function(req, res) {
+	const { eventname, eventlocation, date, time, eventinfo } = req.body;
+		// validierung
+	db.run(`INSERT INTO users(eventname,eventlocation,date,time,eventinfo) VALUES(?, ?, ?, ?, ?)`, [eventname, eventlocation, date, time, eventinfo], function(err) {
+		 if (err) {
+			 return console.log(err.message);
+		 }else{
+		 		return res.redirect('/veranstaltung_unterseite');
+			}
+	 });
+});
 	//=======================================//
 //Called when a URL is called that is not implemented
 app.use((request, response, next) => {
