@@ -62,11 +62,7 @@ app.post('/sendLogin', function(req, res) {
 			if(password == row.password) {
 				//hat geklappt
 				//Sessionvariable setzen
-				req.session['user'] = user;
-				req.session['email'] = row.email;
-				req.session['location'] = row.wohnort;
-				req.session['info'] = row.info;
-
+				req.session['user'] = row.id;
 				res.redirect('/home');
 			}else{
 				//hat nicht geklappt weil password falsch
@@ -125,13 +121,13 @@ app.get('/profil', requiresLogin, function(req, res) {
 	// !req.session.location ? req.session['location'] = '' : null;
 	// !req.session.info ? req.session['info'] = '' : null;
 
-	db.get(`SELECT * FROM users WHERE username='${req.session.user}'`, function(err, row) {
+	db.get(`SELECT * FROM users WHERE id='${req.session.user}'`, function(err, row) {
 		if(err){
 			console.error(err.message);
 		}
 		if (row != undefined) {
 			res.render('profil', {
-				user: req.session.user,
+				user: row.username,
 				email: row.email,
 				location: row.wohnort,
 				info: row.info,
@@ -157,16 +153,16 @@ app.post('/registrierung', function(req, res) {
 		 if (err) {
 			 return console.log(err.message);
 		 }else{
-		 		req.session.user = username;
+		 		req.session.user = this.lastID;
 		 		return res.redirect('/erste_schritte');
 			}
 	 });
 });
 
 app.post('/profil_bearbeiten', function(req, res) {
-	const {wohnort, info } = req.body;
+	const { wohnort, info } = req.body;
 	//	validierung
-	db.run(`UPDATE users SET wohnort='${wohnort}', info='${info}' WHERE username='${req.session.user}';`, function(err) {
+	db.run(`UPDATE users SET wohnort='${wohnort}', info='${info}' WHERE id='${req.session.user}';`, function(err) {
 		 if (err) {
 			 return console.log(err.message);
 		 }else{
@@ -187,18 +183,24 @@ app.post('/neue_Veranstaltung', function(req, res) {
 	 });
 });
 
-app.post('/first_steps', function(req, res) {
-    const {interesse} = req.body;
-    db.run(`INSERT INTO interessen(interesse) VALUES (?)`, [interesse], function(err) {
-			if (err) {
-				return console.log(err.message);
-			}else{
-        return res.redirect('/profil');
-    };
-  });
+app.post('/erste_schritte', function(req, res) {
+	const { interesse } = req.body;
+	interesse.forEach(interest_id => {
+		db.run(`INSERT INTO users_interests(user_id,interests_id) VALUES(?, ?)`, [req.session.user, parseInt(interest_id, 10)], function(err) {
+			 if (err) {
+				 return console.log(err.message);
+			 }else{
+			 		res.render('veranstaltung_unterseite'); //????????
+				}
+	 	});
+ 	});
 });
+
 	//=======================================//
 //Called when a URL is called that is not implemented
 app.use((request, response, next) => {
 	response.status(404).render('error');
 });
+
+// für interessen anzeigen:
+// SELECT * FROM users_interests WHERE user_id = req.session.user

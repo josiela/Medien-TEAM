@@ -30,16 +30,16 @@
 				<form name="erste_schritte" action="erste_schritte" method="post">
 						<ul>
 							<li>
-									<input type="checkbox" name="interesse" value="theater" id="check1">Theater</label>
+									<input type="checkbox" name="interesse[]" value="0" id="check1">Theater</label>
 							</li>
 							<li>
-									<input type="checkbox" name="interesse" value="musik" id="check2">Musik</label>
+									<input type="checkbox" name="interesse[]" value="1" id="check2">Musik</label>
 							</li>
 							<li>
-									<input type="checkbox" name="interesse" value="party" id="check3">Party</label>
+									<input type="checkbox" name="interesse[]" value="2" id="check3">Party</label>
 							</li>
 							<li>
-									<input type="checkbox" name="interesse" value="sport" id="check4">Sport</label>
+									<input type="checkbox" name="interesse[]" value="3" id="check4">Sport</label>
 							</li>
 						</ul>
 						<input type="submit" value="Fertig">
@@ -49,18 +49,3 @@
 		</div>
 	</body>
 </html>
-
-<!-- Headpart:
-				Profilbutton
-				Ausloggen
-
-	"Schön, dass du da bist"
-	"Gib uns nähere angaben:"
-
-			Texteingabe: Wohnort
-
-			"Wofür interessierst du dich?":
-					Chechboxen zum Interessen auswählen
-				-> Datenbank speicherung
-
- Button -> "Fertig" -> Führt zu Home-Seite -->
