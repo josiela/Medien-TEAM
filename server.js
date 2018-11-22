@@ -186,6 +186,17 @@ app.post('/neue_Veranstaltung', function(req, res) {
 			}
 	 });
 });
+
+app.post('/first_steps', function(req, res) {
+    const {interesse} = req.body;
+    db.run(`INSERT INTO interessen(interesse) VALUES (?)`, [interesse], function(err) {
+			if (err) {
+				return console.log(err.message);
+			}else{
+        return res.redirect('/profil');
+    };
+  });
+});
 	//=======================================//
 //Called when a URL is called that is not implemented
 app.use((request, response, next) => {
