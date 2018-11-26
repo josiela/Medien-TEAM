@@ -90,8 +90,26 @@ app.get('/start-login', function(req, res) {
 });
 
 app.get('/home', requiresLogin, function(req, res) {
-	res.render('home');
-});
+		const sql = 'SELECT * FROM events';
+		console.log(sql);
+		db.all(sql, function(err, rows){
+			if (err){
+				console.log(err.message);
+			}
+			else{
+				console.log(rows);
+				res.render('home',  {
+					'rows':  rows
+				});
+			}
+		});
+	});
+
+//	res.render('home', () {
+
+//		'rows' : rows
+
+
 
 app.get('/loginerror', function(req, res) {
 	res.render('loginerror');
@@ -116,11 +134,6 @@ app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 
 //Infos werden geholt und in der Sitzung gespeichert
 app.get('/profil', requiresLogin, function(req, res) {
-	// !req.session.user ? res.redirect('/start-login') : null;
-	// !req.session.email ? req.session['email'] = '' : null;
-	// !req.session.location ? req.session['location'] = '' : null;
-	// !req.session.info ? req.session['info'] = '' : null;
-
 	db.get(`SELECT * FROM users WHERE id='${req.session.user}'`, function(err, row) {
 		if(err){
 			console.error(err.message);
@@ -134,9 +147,24 @@ app.get('/profil', requiresLogin, function(req, res) {
 			});
 	} else {
 	}
-});
 
-//Darstellen auf der Seite
+});
+});
+app.get('/home', requiresLogin, function(req, res) {
+db.get(`SELECT * FROM events`, function(err, row) {
+	if(err){
+		console.error(err.message);
+	}
+	if (row != undefined) {
+		res.render('home', {
+			eventname: rows.eventname,
+			eventlocation: rows.eventlocation,
+			date: rows.date,
+			time: rows.time,
+		});
+} else {
+}
+});
 });
 
 app.get('/registrierung', function(req, res) {
