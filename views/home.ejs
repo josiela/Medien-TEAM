@@ -16,20 +16,21 @@
 					<a href="/neue_Veranstaltung"><img class="icons header-right" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"></a>
 				</div>
 			</div>
-			<table>
-			<% for(var i = 0; i < rows.length; i++) { %>
-					<tr>
-							<td> <a href="<%= "/home/" + rows[i].id %>" method="get"><%= rows[i].eventname %></a></td>
-							<td> <%= rows[i].eventlocation %> </td>
-							<td> <%= rows[i].date %> </td>
-							<td> <%= rows[i].time %> </td>
-					</tr>
-			<%}%>
-			</table>
+
 			<div class="content">
 				<h1>Willkommen zurück!</h1>
 			<div>
-				<a href="/veranstaltung_unterseite">Hier steht eine Veranstaltung</a>
+				<table>
+				<% for(var i = 0; i < rows.length; i++) { %>
+						<tr>
+								<td> <a href="<%= "/home/" + rows[i].id %>" method="get"><%= rows[i].eventname %></a></td>
+								<td> <%= rows[i].eventlocation %> </td>
+								<td> <%= rows[i].date %> </td>
+								<td> <%= rows[i].time %> </td>
+						</tr>
+				<%}%>
+				</table>
+		<!--		<a href="/veranstaltung_unterseite">Hier steht eine Veranstaltung</a> -->
 			</div>
 		</div>
 	</body>
