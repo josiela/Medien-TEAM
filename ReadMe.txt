@@ -1,4 +1,4 @@
-Notwendige Installationen für die Funktion:
+﻿Notwendige Installationen für die Funktion:
 
 Node.js und Sqlite müssen vorliegen.
 Vor dem ersten Mal Server-Starten: node ./bootstrap
@@ -32,3 +32,6 @@ npm install nodemon --save-dev
 npm install sqlite3 --save
 npm install bcrypt --save
 npm install express-session --save
+
+Zum Starten der Anwendung zuerst node ./bootstrap
+Dann erst node server.js

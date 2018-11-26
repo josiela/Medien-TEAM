@@ -1,0 +1,8 @@
+Funktionen die noch rein müssen:
+
+Username bei Begrüßung anzeigen
+Bilder hochladen und als BLOB abspeichern können
+Bilder aufrufen 
+Bei Veranstaltungen Zu- und Absagen können
+Sortieren der Veranstaltungen nach Tags
+Auf Home-seite persönliche/zugesagte Veranstaltungen anzeigen

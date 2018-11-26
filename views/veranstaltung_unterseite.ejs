@@ -9,30 +9,26 @@
 		<div>
 			<div class="header">
 				<div>
-					<a href="/"><img class="icons" src="images/Logo.png" alt="Logo"></a>
+					<a href="/"><img class="icons" src="/images/Logo.png" alt="Logo"></a>
 					<a href="/" class="header-text"><h1>Meet Your City</h1></a>
-					<a href="/logout"><img class="icons header-right" src="images/Logout.png" alt="Logout" width="30px" height="30px"></a>
-					<a href="/profil"><img class="icons header-right" src="images/Profil_minimal.png" alt="Profil" width="30px" height="30px"></a>
-					<a href="/neue_Veranstaltung"><img class="icons header-right" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"></a>
+					<a href="/logout"><img class="icons header-right" src="/images/Logout.png" alt="Logout" width="30px" height="30px"></a>
+					<a href="/profil"><img class="icons header-right" src="/images/Profil_minimal.png" alt="Profil" width="30px" height="30px"></a>
+					<a href="/neue_Veranstaltung"><img class="icons header-right" src="/images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"></a>
 				</div>
 			</div>
 			<div class="content">
-				<h1> Hier entsteht die Veranstaltungs-Unterseite</h1>
-
+				<h2><%= row.eventname%></h2>
 				<div>
-					Name der Veranstaltung: <%= row.eventname%>
+					<%= row.eventlocation%>
 				</div>
 				<div>
-					Ort der Veranstaltung: <%= row.eventlocation%>
-				</div>
-				<div>
-					Datum: <%= row.date%>
+					<%= row.date%>
 				</div>
 				<div>
 					Uhrzeit: <%= row.time%>
 				</div>
 				<div>
-					Beschreibung: <%= row.eventinfo%>
+					<%= row.eventinfo%>
 				</div>
 			</div>
 		</div>

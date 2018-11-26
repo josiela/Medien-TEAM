@@ -91,6 +91,7 @@ app.get('/start-login', function(req, res) {
 
 app.get('/home', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
+		const user = 'SELECT username FROM users WHERE id='+req.session['user']; //Funktioniert noch nicht!!! Soll Usernamen als Begrüßung anzeigen
 		console.log(sql);
 		db.all(sql, function(err, rows){
 			if (err){
@@ -99,7 +100,8 @@ app.get('/home', requiresLogin, function(req, res) {
 			else{
 				console.log(rows);
 				res.render('home',  {
-					'rows':  rows
+					'user': user,
+					'rows': rows
 				});
 			}
 		});
@@ -128,7 +130,7 @@ app.get('/veranstaltung_unterseite/:id', requiresLogin, function(req, res) {
 app.post('/neue_Veranstaltung', function(req, res) {
 	const { eventname, eventlocation, date, time, eventinfo } = req.body;
 		// validierung
-	db.run(`INSERT INTO events(eventname,eventlocation,date,time,eventinfo) VALUES(?, ?, ?, ?, ?)`, [eventname, eventlocation, date, time, eventinfo], function(err) {
+	db.run(`INSERT INTO events(eventname,eventlocation,strftime('%d-%m-%Y'),time,eventinfo) VALUES(?, ?, ?, ?, ?)`, [eventname, eventlocation, date, time, eventinfo], function(err) {
 		 if (err) {
 			 return console.log(err.message);
 		 }else{
