@@ -105,19 +105,38 @@ app.get('/home', requiresLogin, function(req, res) {
 		});
 	});
 
-//	res.render('home', () {
-
-//		'rows' : rows
-
-
-
 app.get('/loginerror', function(req, res) {
 	res.render('loginerror');
 });
 
-app.get('/veranstaltung_unterseite', requiresLogin, function(req, res) {
-	res.render('veranstaltung_unterseite');
+app.get('/veranstaltung_unterseite/:id', requiresLogin, function(req, res) {
+	const sql = 'SELECT * FROM events WHERE id ='+req.params.id;
+	console.log(sql);
+	db.get(sql, function(err, row){
+		if (err){
+			console.log(err.message);
+		}
+		else{
+			console.log(row);
+			res.render('veranstaltung_unterseite',  {
+				'row':  row
+			});
+		}
+	});
 });
+
+app.post('/neue_Veranstaltung', function(req, res) {
+	const { eventname, eventlocation, date, time, eventinfo } = req.body;
+		// validierung
+	db.run(`INSERT INTO events(eventname,eventlocation,date,time,eventinfo) VALUES(?, ?, ?, ?, ?)`, [eventname, eventlocation, date, time, eventinfo], function(err) {
+		 if (err) {
+			 return console.log(err.message);
+		 }else{
+		 		return res.redirect('home');
+			}
+	 });
+});
+
 
 app.get('/neue_Veranstaltung', requiresLogin, function(req, res) {
 	res.render('neue_Veranstaltung');
@@ -147,25 +166,9 @@ app.get('/profil', requiresLogin, function(req, res) {
 			});
 	} else {
 	}
+	});
+});
 
-});
-});
-app.get('/home', requiresLogin, function(req, res) {
-db.get(`SELECT * FROM events`, function(err, row) {
-	if(err){
-		console.error(err.message);
-	}
-	if (row != undefined) {
-		res.render('home', {
-			eventname: rows.eventname,
-			eventlocation: rows.eventlocation,
-			date: rows.date,
-			time: rows.time,
-		});
-} else {
-}
-});
-});
 
 app.get('/registrierung', function(req, res) {
 	res.render('registrierung');
@@ -199,17 +202,6 @@ app.post('/profil_bearbeiten', function(req, res) {
 	 });
 });
 
-app.post('/neue_Veranstaltung', function(req, res) {
-	const { eventname, eventlocation, date, time, eventinfo } = req.body;
-		// validierung
-	db.run(`INSERT INTO events(eventname,eventlocation,date,time,eventinfo) VALUES(?, ?, ?, ?, ?)`, [eventname, eventlocation, date, time, eventinfo], function(err) {
-		 if (err) {
-			 return console.log(err.message);
-		 }else{
-		 		return res.redirect('/veranstaltung_unterseite');
-			}
-	 });
-});
 
 app.post('/erste_schritte', function(req, res) {
 	const { interesse } = req.body;
@@ -218,7 +210,7 @@ app.post('/erste_schritte', function(req, res) {
 			 if (err) {
 				 return console.log(err.message);
 			 }else{
-			 		res.render('veranstaltung_unterseite'); //????????
+			 		res.redirect('home');
 				}
 	 	});
  	});

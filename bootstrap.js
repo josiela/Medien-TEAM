@@ -16,7 +16,7 @@ db.exec('CREATE TABLE users(id INTEGER PRIMARY KEY, email text, password text, u
 db.exec('CREATE TABLE pictures(document_id INTEGER PRIMARY KEY, mime_type TEXT NOT NULL, doc BLOB)');
 
 // Create events Table
-db.exec('CREATE TABLE events(eventname text, eventlocation text, date DATETIME, time TIME, eventinfo text)');
+db.exec('CREATE TABLE events(id INTEGER PRIMARY KEY AUTOINCREMENT, eventname text, eventlocation text, date DATETIME, time TIME, eventinfo text)');
 
 // Create interessen Table
 db.exec('CREATE TABLE interests(id INTEGER PRIMARY KEY, title TEXT NOT NULL)');

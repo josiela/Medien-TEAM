@@ -17,20 +17,24 @@
 				</div>
 			</div>
 			<div class="content">
-			<div>
-				<a href="/neue_Veranstaltung">Erstelle eine Veranstaltung</a>
-			</div>
-			<h1> Hier entsteht die Veranstaltungs-Unterseite</h1>
+				<h1> Hier entsteht die Veranstaltungs-Unterseite</h1>
+
+				<div>
+					Name der Veranstaltung: <%= row.eventname%>
+				</div>
+				<div>
+					Ort der Veranstaltung: <%= row.eventlocation%>
+				</div>
+				<div>
+					Datum: <%= row.date%>
+				</div>
+				<div>
+					Uhrzeit: <%= row.time%>
+				</div>
+				<div>
+					Beschreibung: <%= row.eventinfo%>
+				</div>
 			</div>
 		</div>
- <!--
- 			"Büld"
-			"Name der Veranstaltung"
- 			"Datum, Uhrzeit, Ort"
-			"Kurzbeschreibung"
-			"Tag"
-
-			Button: Zusage, Absage, Merken -> Datenbank
-		-->
 	</body>
 </html>
