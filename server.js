@@ -91,7 +91,6 @@ app.get('/start-login', function(req, res) {
 
 app.get('/home', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
-		const user = 'SELECT username FROM users WHERE id='+req.session['user']; //Funktioniert noch nicht!!! Soll Usernamen als Begrüßung anzeigen
 		console.log(sql);
 		db.all(sql, function(err, rows){
 			if (err){
@@ -100,7 +99,6 @@ app.get('/home', requiresLogin, function(req, res) {
 			else{
 				console.log(rows);
 				res.render('home',  {
-					'user': user,
 					'rows': rows
 				});
 			}
@@ -212,7 +210,7 @@ app.post('/erste_schritte', function(req, res) {
 			 if (err) {
 				 return console.log(err.message);
 			 }else{
-			 		res.redirect('home');
+			 		res.render('home');
 				}
 	 	});
  	});
