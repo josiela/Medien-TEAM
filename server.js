@@ -257,7 +257,7 @@ app.post('/merken', function(req, res) {
 			console.log(err.message);
 		} else {
 				console.log("hallo123")
-				res.redirect('/profil');
+				res.redirect('/');
 		}
 	});
 
