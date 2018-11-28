@@ -22,13 +22,14 @@
 
 			<div>
 				<form action="/suchergebnis" method="post">
-						<input id="search" name="search" type="text" placeholder="Suche nach Veranstaltungen">
+						<input id="search" name="search" type="text" placeholder="Suche ein Thema (z.B. Musik)">
 						<input type="submit" value="Suchen"/>
 				</form>
 			</div>
 
 			<div>
 				<table>
+					<h2> Vorschläge</h2>
 					<tbody>
 						<% for (var i = 0; i < rows.length; i++) { %>
 							<tr>

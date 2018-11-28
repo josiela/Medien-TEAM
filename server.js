@@ -84,6 +84,7 @@ app.get('/start-login', function(req, res) {
 	res.render('start-login');
 });
 
+// Events auf der Startseite anzeigen
 app.get('/', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
 		console.log(sql);
@@ -100,12 +101,13 @@ app.get('/', requiresLogin, function(req, res) {
 		});
 	});
 
+// Event suchen
 app.post("/suchergebnis", requiresLogin, function(req, res) {
 	if (req.body["search"] == "") {
 		res.redirect("/");
 	}
 
-	const sql = 'SELECT * FROM events WHERE eventname ="' + req.body["search"] + "\"";
+	const sql = 'SELECT * FROM events WHERE thema ="' + req.body["search"] + "\"";
 	console.log(sql);
 	db.all(sql, function(err, row) {
 		if (err){
@@ -124,6 +126,7 @@ app.get('/loginerror', function(req, res) {
 	res.render('loginerror');
 });
 
+// Veranstaltungen auf allgemeiner Veranstaltungsunterseite anzeigen
 app.get('/veranstaltung_unterseite/:id', requiresLogin, function(req, res) {
 	const sql = 'SELECT * FROM events WHERE id ='+req.params.id;
 	console.log(sql);
@@ -140,6 +143,7 @@ app.get('/veranstaltung_unterseite/:id', requiresLogin, function(req, res) {
 	});
 });
 
+// Neue Veranstaltung erstellen
 app.post('/neue_Veranstaltung', function(req, res) {
 	const { eventname, eventlocation, date, time, eventinfo } = req.body;
 		// validierung
@@ -147,7 +151,7 @@ app.post('/neue_Veranstaltung', function(req, res) {
 		 if (err) {
 			 console.log(err.message);
 		 }else{
-		 		res.redirect('home');
+		 		res.redirect('/');
 			}
 	 });
 });
@@ -217,7 +221,24 @@ app.post('/profil_bearbeiten', function(req, res) {
 	 });
 });
 
+// Gemerkte Events speichern
+//app.post('/merken', function(req, res) {
+	//const sql = 'SELECT * FROM events WHERE eventname ="' + req.body["eventname"] + "\"";
+	//console.log(sql);
+//	db.all(sql, function(err, row) {
+//		if (err){
+//			console.log(err.message);
+//		}
+//		else{
+//			console.log(row);
+//			res.render('suchergebnis', {
+//				'row': row
+//			});
+//		}
+//	});
+//})
 
+// Interessen abspeichern nach registrieren
 app.post('/erste_schritte', function(req, res) {
 	const { interesse } = req.body;
 	interesse.forEach(interest_id => {
@@ -228,7 +249,7 @@ app.post('/erste_schritte', function(req, res) {
 			 }
 	 	});
  	});
-	res.redirect('/home');
+	res.redirect('/');
 });
 
 	//=======================================//
