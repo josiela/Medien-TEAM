@@ -100,6 +100,26 @@ app.get('/', requiresLogin, function(req, res) {
 		});
 	});
 
+app.post("/suchergebnis", requiresLogin, function(req, res) {
+	if (req.body["search"] == "") {
+		res.redirect("/");
+	}
+
+	const sql = 'SELECT * FROM events WHERE eventname ="' + req.body["search"] + "\"";
+	console.log(sql);
+	db.all(sql, function(err, row) {
+		if (err){
+			console.log(err.message);
+		}
+		else{
+			console.log(row);
+			res.render('suchergebnis', {
+				'row': row
+			});
+		}
+	});
+})
+
 app.get('/loginerror', function(req, res) {
 	res.render('loginerror');
 });
@@ -208,7 +228,7 @@ app.post('/erste_schritte', function(req, res) {
 			 }
 	 	});
  	});
-	res.redirect('/');
+	res.redirect('/home');
 });
 
 	//=======================================//
