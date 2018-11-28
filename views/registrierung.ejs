@@ -15,23 +15,31 @@
 				<form action="registrierung" method="post">
 					<p>
 						<label>Benutzername:
-							<input id="name" type="name" name="username" required>
+							<input id="name" type="name" name="username" placeholder="Name (erforderlich)" required>
 						</label>
 					</p>
 					<p>
 						<label>Passwort:
-							<input type="password" name="password" required>
+							<input type="password" name="password" placeholder="Passwort (erforderlich)" required>
 						</label>
 					</p>
 					<p>
 						<label>E-Mail:
-							<input type="email" name="email" id="contact_email" required>
+							<input type="email" name="email" id="contact_email" placeholder="E-Mail (erforderlich)" required>
 						</label>
 					</p>
 					<p>
-						<label>Wohnort:
-							<input id="wohnort" type="wohnort" name="wohnort" required>
-						</label>
+						<label> Wohnort:
+						<select name="wohnort" multiple="multiple" size="5">
+								<option value="Hamburg-Mitte"> Hamburg-Mitte </option>
+								<option value="Altona">  Altona </option>
+								<option value="Eimsbüttel"> Eimsbüttel </option>
+								<option value="Hamburg-Nord"> Hamburg-Nord </option>
+								<option value="Wandsbek"> Wandsbek </option>
+								<option value="Bergedorf"> Bergedorf </option>
+								<option value="Harburg"> Harburg </option>
+						</select>
+					</label>
 					</p>
 					<div>
 						<input type="submit" value="Absenden" />
