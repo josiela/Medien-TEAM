@@ -21,23 +21,18 @@
 				<h1>Willkommen zurück</h1>
 			<div>
 				<table>
-				<% for(var i = 0; i < rows.length; i++) { %>
-						<tr>
+					<tbody>
+						<% for (var i = 0; i < rows.length; i++) { %>
+							<tr>
 								<td> <a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get"><%= rows[i].eventname %></a></td>
 								<td> <%= rows[i].eventlocation %> </td>
 								<td> <%= rows[i].date %> </td>
 								<td> <%= rows[i].time %> </td>
-						</tr>
-				<%}%>
+							</tr>
+						<%}%>
+					</tbody>
 				</table>
-		<!--		<a href="/veranstaltung_unterseite">Hier steht eine Veranstaltung</a> -->
 			</div>
 		</div>
 	</body>
 </html>
-<!--
-	"Events":
-		- Markierte events
-		- Eventvorschläge
-	"Checkboxen zum filtern"
--->

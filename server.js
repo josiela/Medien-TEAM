@@ -36,8 +36,6 @@ app.listen(3000, function(){
 let requiresLogin = function(req, res, next) {
   if (!req.session.user) {
 		res.redirect('/start-login');
-		//wofür? Hierdurch treten Fehler auf in der Powershell wenn man auf der Startseite ist
-    next();
   }
   return next();
 };
@@ -45,9 +43,6 @@ let requiresLogin = function(req, res, next) {
 //---------------------------------------------//
 
 //------------Sessionvariablen---------------//
-app.get('/', requiresLogin, function(req, res) {
-	res.redirect('/home');
-});
 
 app.post('/sendLogin', function(req, res) {
 	//in Datenbank gucken
@@ -63,7 +58,7 @@ app.post('/sendLogin', function(req, res) {
 				//hat geklappt
 				//Sessionvariable setzen
 				req.session['user'] = row.id;
-				res.redirect('/home');
+				res.redirect('/');
 			}else{
 				//hat nicht geklappt weil password falsch
 				res.redirect('/loginerror');
@@ -89,7 +84,7 @@ app.get('/start-login', function(req, res) {
 	res.render('start-login');
 });
 
-app.get('/home', requiresLogin, function(req, res) {
+app.get('/', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
 		console.log(sql);
 		db.all(sql, function(err, rows){
@@ -128,11 +123,11 @@ app.get('/veranstaltung_unterseite/:id', requiresLogin, function(req, res) {
 app.post('/neue_Veranstaltung', function(req, res) {
 	const { eventname, eventlocation, date, time, eventinfo } = req.body;
 		// validierung
-	db.run(`INSERT INTO events(eventname,eventlocation,strftime('%d-%m-%Y'),time,eventinfo) VALUES(?, ?, ?, ?, ?)`, [eventname, eventlocation, date, time, eventinfo], function(err) {
+	db.run(`INSERT INTO events(eventname,eventlocation,date,time,eventinfo) VALUES(?, ?, ?, ?, ?)`, [eventname, eventlocation, date, time, eventinfo], function(err) {
 		 if (err) {
-			 return console.log(err.message);
+			 console.log(err.message);
 		 }else{
-		 		return res.redirect('home');
+		 		res.redirect('home');
 			}
 	 });
 });
@@ -182,10 +177,10 @@ app.post('/registrierung', function(req, res) {
 		// validierung
 	db.run(`INSERT INTO users(email,password,username,wohnort) VALUES(?, ?, ?, ?)`, [email, password, username, wohnort], function(err) {
 		 if (err) {
-			 return console.log(err.message);
+			 console.log(err.message);
 		 }else{
 		 		req.session.user = this.lastID;
-		 		return res.redirect('/erste_schritte');
+		 		res.redirect('/erste_schritte');
 			}
 	 });
 });
@@ -195,9 +190,9 @@ app.post('/profil_bearbeiten', function(req, res) {
 	//	validierung
 	db.run(`UPDATE users SET wohnort='${wohnort}', info='${info}' WHERE id='${req.session.user}';`, function(err) {
 		 if (err) {
-			 return console.log(err.message);
+				console.log(err.message);
 		 }else{
-		 		return res.redirect('/profil');
+		 		res.redirect('/profil');
 			}
 	 });
 });
@@ -208,12 +203,12 @@ app.post('/erste_schritte', function(req, res) {
 	interesse.forEach(interest_id => {
 		db.run(`INSERT INTO users_interests(user_id,interests_id) VALUES(?, ?)`, [req.session.user, parseInt(interest_id, 10)], function(err) {
 			 if (err) {
-				 return console.log(err.message);
-			 }else{
-			 		res.render('home');
-				}
+					console.log(err.message);
+					throw "Cannot write user-interests to Database";
+			 }
 	 	});
  	});
+	res.redirect('/');
 });
 
 	//=======================================//
