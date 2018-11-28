@@ -87,7 +87,19 @@ app.get('/start-login', function(req, res) {
 // Events auf der Startseite anzeigen
 app.get('/', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
-		console.log(sql);
+		let userEvents = {};
+
+		db.all(`SELECT DISTINCT users_events.events_id, users_events.user_id, events.eventname, events.eventlocation, events.date, events.time FROM users_events INNER JOIN events ON users_events.events_id=events.id WHERE users_events.user_id=${req.session.user} `, function(err, row) {
+			if(err){
+				console.error(err.message);
+			}
+			if (row != undefined) {
+				userEvents = row;
+			} else {
+					console.log("keine events")
+				}
+		});
+
 		db.all(sql, function(err, rows){
 			if (err){
 				console.log(err.message);
@@ -95,7 +107,9 @@ app.get('/', requiresLogin, function(req, res) {
 			else{
 				console.log(rows);
 				res.render('home',  {
-					'rows': rows
+					'userEvents': userEvents,
+					'rows': rows,
+					//'userEvents': kj
 				});
 			}
 		});
@@ -166,7 +180,18 @@ app.get('/erste_schritte', requiresLogin, function(req, res) {
 })
 
 app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
-	res.render('profil_bearbeiten');
+	db.get(`SELECT * FROM users WHERE id='${req.session.user}'`, function(err, row) {
+		if(err){
+			console.error(err.message);
+		}
+		if (row != undefined) {
+				res.render('profil_bearbeiten', {
+					currentLocation: row.wohnort,
+					currentInfo: row.info
+			});
+	} else {
+	}
+	});
 });
 
 
@@ -221,22 +246,26 @@ app.post('/profil_bearbeiten', function(req, res) {
 	 });
 });
 
+// INSERT INTO users_events (user_id, events_id) VALUES (req.session.user, req.body["eventId"])
+
 // Gemerkte Events speichern
-//app.post('/merken', function(req, res) {
-	//const sql = 'SELECT * FROM events WHERE eventname ="' + req.body["eventname"] + "\"";
-	//console.log(sql);
-//	db.all(sql, function(err, row) {
-//		if (err){
-//			console.log(err.message);
-//		}
-//		else{
-//			console.log(row);
-//			res.render('suchergebnis', {
-//				'row': row
-//			});
-//		}
-//	});
-//})
+app.post('/merken', function(req, res) {
+	const sql = `INSERT INTO users_events (user_id, events_id) VALUES (${req.session.user}, ${req.body["eventId"]})`;
+
+	db.run(sql, function(err) {
+		if (err){
+			console.log(err.message);
+		} else {
+				console.log("hallo123")
+				res.redirect('/profil');
+		}
+	});
+
+	const sql2 = `SELECT * FROM users_events`
+	db.all(sql2, function(err, rows) {
+		console.log(rows);
+	});
+})
 
 // Interessen abspeichern nach registrieren
 app.post('/erste_schritte', function(req, res) {

@@ -29,6 +29,6 @@ db.run(`INSERT INTO interests(title) VALUES ("sport")`);
 //
 db.exec('CREATE TABLE users_interests(id INTEGER PRIMARY KEY, user_id INTEGER, interests_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(interests_id) REFERENCES interests(id))');
 
-db.exec('CREATE TABLE users_events(id INTEGER PRIMARY KEY, user_id INTEGER, events_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(events_id) REFERENCES events(id))');
+db.exec('CREATE TABLE users_events(id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, events_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(events_id) REFERENCES events(id))');
 
 db.close();

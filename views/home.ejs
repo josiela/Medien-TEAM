@@ -42,6 +42,13 @@
 					</tbody>
 				</table>
 			</div>
+			<br>
+
+			<div>
+				<% for (var j = 0; j < userEvents.length; j++) { %>
+					<%= userEvents[j].id %>ads | <%= userEvents[j].eventname %> | <%= userEvents[j].eventlocation %> | <%= userEvents[j].date %> | <%= userEvents[j].time %><br>
+				<%}%>
+			</div>
 
 		</div>
 	</body>

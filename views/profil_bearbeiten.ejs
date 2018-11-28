@@ -27,8 +27,9 @@
 					</label>
 				</div>
 				<div>
-					<label> Wohnort:
+					<label> Wohnort: <%= currentLocation%>
 					<select  name="wohnort" >
+							<option value="<%= currentLocation%>" hidden selected> <%= currentLocation%> </option>
 				    	<option value="Hamburg-Mitte"> Hamburg-Mitte </option>
 				    	<option value="Altona">  Altona </option>
 				    	<option value="Eimsbüttel"> Eimsbüttel </option>
@@ -39,13 +40,8 @@
 					</select>
 				</label>
 				<br>
-
-		<!--			<div>
-						<label>Wohnort:
-							<input id="wohnort" type="text" name="wohnort"  required>
-						</label> -->
 						<label>Kurzbeschreibung:
-							 <input id="info" type="text" name="info">
+							 <input id="info" type="text" name="info" value="<%= currentInfo%>">
 						</label>
 						<div>
 							<input type="submit" value="speichern" />
