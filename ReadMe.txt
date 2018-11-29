@@ -31,5 +31,6 @@ npm install nodemon --save-dev
 npm install sqlite3 --save
 npm install bcrypt --save
 npm install express-session --save
+npm install --save express-fileupload
 
 node ./bootstrap vor dem Starten der server.js (Muss nur ein einziges Mal ausgeführt werden)
