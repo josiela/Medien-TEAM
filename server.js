@@ -148,7 +148,7 @@ app.get('/', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
 		let userEvents = {};
 
-		db.all(`SELECT DISTINCT users_events.events_id, users_events.user_id, events.eventname, events.eventlocation, events.date, events.time, events.eventinfo FROM users_events INNER JOIN events ON users_events.events_id=events.id WHERE users_events.user_id=${req.session.user} `, function(err, row) {
+		db.all(`SELECT DISTINCT users_events.events_id, users_events.user_id, events.eventname, events.eventlocation, events.date, events.time, events.eventinfo, events.eventtag FROM users_events INNER JOIN events ON users_events.events_id=events.id WHERE users_events.user_id=${req.session.user} `, function(err, row) {
 			if(err){
 				console.error(err.message);
 			}
