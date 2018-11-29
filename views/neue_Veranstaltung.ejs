@@ -27,13 +27,28 @@
 					<label for="text">Name der Veranstaltung: </label>
 					<input type="text" id="eventname" name="eventname" required>
 					<label for="text">Ort der Veranstaltung: </label>
-					<input type="text" id="eventlocation" name="eventlocation" required>
+					<select  name="eventlocation" required>
+				    	<option value="Hamburg-Mitte"> Hamburg-Mitte </option>
+				    	<option value="Altona">  Altona </option>
+				    	<option value="Eimsbüttel"> Eimsbüttel </option>
+				    	<option value="Hamburg-Nord"> Hamburg-Nord </option>
+							<option value="Wandsbek"> Wandsbek </option>
+							<option value="Bergedorf"> Bergedorf </option>
+							<option value="Harburg"> Harburg </option>
+					</select>
 					<label for="date">Datum: </label>
 					<input id="date" type="date" value="2018-11-01" name="date" required>
 					<label for="time">Uhrzeit: </label>
 					<input id="time" type="time" name="time" value="15:00" required>
 					<label for="text">Beschreibung der Veranstaltung: </label>
 					<input type="text" id="eventinfo" name="eventinfo" required>
+					<label for="text">Interessen-Tag: </label>
+					<select  name="eventtag" required>
+				    	<option value="Theater"> Theater </option>
+				    	<option value="Musik"> Musik </option>
+				    	<option value="Party"> Party </option>
+				    	<option value="Sport"> Sport </option>
+					</select>
 
 					<div>
 						<input type="submit" value="Speichern" name="speichern">

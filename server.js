@@ -180,7 +180,7 @@ app.post("/suchergebnis", requiresLogin, function(req, res) {
 		res.redirect("/");
 	}
 
-	const sql = 'SELECT * FROM events WHERE eventname LIKE"' + req.body["search"] + "\"";
+	const sql = 'SELECT * FROM events WHERE eventtag="' + req.body["search"] + "\"";
 	console.log(sql);
 	db.all(sql, function(err, row) {
 		if (err){
@@ -218,9 +218,9 @@ app.get('/veranstaltung_unterseite/:id', requiresLogin, function(req, res) {
 
 // Neue Veranstaltung erstellen
 app.post('/neue_Veranstaltung', function(req, res) {
-	const { eventname, eventlocation, date, time, eventinfo } = req.body;
+	const { eventname, eventlocation, date, time, eventinfo, eventtag } = req.body;
 		// validierung
-	db.run(`INSERT INTO events(eventname,eventlocation,date,time,eventinfo) VALUES(?, ?, ?, ?, ?)`, [eventname, eventlocation, date, time, eventinfo], function(err) {
+	db.run(`INSERT INTO events(eventname,eventlocation,date,time,eventinfo,eventtag) VALUES(?, ?, ?, ?, ?, ?)`, [eventname, eventlocation, date, time, eventinfo, eventtag], function(err) {
 		 if (err) {
 			 console.log(err.message);
 		 }else{
