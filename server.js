@@ -268,6 +268,20 @@ app.post('/merken', function(req, res) {
 	});
 })
 
+// Events löschen
+app.post('/delete', function(req, res){
+	const sql = `DELETE FROM users_events`;
+
+	db.run(sql, function(err) {
+		if (err){
+			console.log(err.message);
+		} else {
+				console.log("Tabelle gelöscht")
+				res.redirect('/');
+		}
+	});
+})
+
 // Interessen abspeichern nach registrieren
 app.post('/erste_schritte', function(req, res) {
 	const { interesse } = req.body;
