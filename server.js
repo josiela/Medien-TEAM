@@ -176,10 +176,6 @@ app.get('/', requiresLogin, function(req, res) {
 
 // Event suchen
 app.post("/suchergebnis", requiresLogin, function(req, res) {
-	if (req.body["search"] == "") {
-		res.redirect("/");
-	}
-
 	const sql = 'SELECT * FROM events WHERE eventtag="' + req.body["search"] + "\"";
 	console.log(sql);
 	db.all(sql, function(err, row) {

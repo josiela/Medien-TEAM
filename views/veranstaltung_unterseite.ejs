@@ -36,8 +36,10 @@
  <br>
 				<div>
 					<form action="/merken" method="post">
-						Hier kanns du dir dein Event merken:
-						<input type="submit" name="eventId" value="<%= row.id%>"/>
+						Merken:<br>
+						<button type="submit" name="eventId" value="<%= row.id%>" style="background-color:transparent; border-color:transparent;">
+  						<img class="icons header-left" src="/images/book.png" alt="Merken" width="25px" height="25px"/>
+						</button>
 					</form>
 				</div>
 
