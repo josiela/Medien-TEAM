@@ -50,12 +50,20 @@
 					<tbody>
 						<% for (var j = 0; j < userEvents.length; j++) { %>
 							<tr>
-								<td> <a href="<%= "/veranstaltung_unterseite/" + userEvents[j].id %>" method="get"><%= userEvents[j].eventname %></a></td>
+								<!-- <%= userEvents[j].id %> -->
+								<td>Eventname </td>
+								<td>Location</td>
+								<td>Datum</td>
+								<td>Uhrzeit</td>
+								<td>Info</td>
+							</tr>
+							<tr>
 								<!-- <%= userEvents[j].id %> -->
 								<td><%= userEvents[j].eventname %> </td>
 								<td><%= userEvents[j].eventlocation %></td>
 								<td><%= userEvents[j].date %></td>
 								<td><%= userEvents[j].time %></td>
+								<td><%= userEvents[j].eventinfo %></td>
 							</tr>
 						<%}%>
 					</tbody>
