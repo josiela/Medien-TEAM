@@ -31,6 +31,16 @@
 				<table>
 					<h2> Vorschläge</h2>
 					<tbody>
+						<tr>
+							<td>Eventname </td>
+							<td>Location</td>
+							<td>Datum</td>
+							<td>Uhrzeit</td>
+							<td>Info</td>
+						</tr>
+					</tbody>
+
+					<tbody>
 						<% for (var i = 0; i < rows.length; i++) { %>
 							<tr>
 								<td> <a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get"><%= rows[i].eventname %></a></td>
@@ -48,15 +58,18 @@
 				<table>
 					<h2>Deine gemerkten Events</h2>
 					<tbody>
+						<tr>
+							<td>Eventname </td>
+							<td>Location</td>
+							<td>Datum</td>
+							<td>Uhrzeit</td>
+							<td>Info</td>
+						</tr>
+					</tbody>
+					
+					<tbody>
 						<% for (var j = 0; j < userEvents.length; j++) { %>
-							<tr>
-								<!-- <%= userEvents[j].id %> -->
-								<td>Eventname </td>
-								<td>Location</td>
-								<td>Datum</td>
-								<td>Uhrzeit</td>
-								<td>Info</td>
-							</tr>
+
 							<tr>
 								<!-- <%= userEvents[j].id %> -->
 								<td><%= userEvents[j].eventname %> </td>
@@ -75,7 +88,7 @@
 					<input type="submit" name="delete" value="Gemerkte Events löschen"/>
 				</form>
 			</div>
-			
+
 		</div>
 	</body>
 </html>
