@@ -180,7 +180,7 @@ app.post("/suchergebnis", requiresLogin, function(req, res) {
 		res.redirect("/");
 	}
 
-	const sql = 'SELECT * FROM events WHERE eventname="' + req.body["search"] + "\"";
+	const sql = 'SELECT * FROM events WHERE eventname LIKE"' + req.body["search"] + "\"";
 	console.log(sql);
 	db.all(sql, function(err, row) {
 		if (err){

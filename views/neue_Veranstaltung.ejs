@@ -16,18 +16,12 @@
 					<a href="/neue_Veranstaltung"><img class="icons header-right" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"></a>
 				</div>
 			</div>
+
 			<div class="content">
 			<div>
 				<h1>Erstelle eine eigene Veranstaltung</h1>
 			</div>
-			<div>
-				<h2>Lade ein Bild für deine Veranstaltung hoch: </h2>
-				<form method="post" enctype="multipart/form-data">
-					<label> Wählen Sie eine Bilddatei (*.png, *.jpg, etc.) von Ihrem Rechner aus.
-					<input name="datei"
-					type="file" size="50" accept="image/*"> </label>
-				</form>
-			</div>
+
 			<div>
 				<form name="neue_Veranstaltung" action="neue_Veranstaltung" method="post">
 					<label for="text">Name der Veranstaltung: </label>
@@ -40,22 +34,13 @@
 					<input id="time" type="time" name="time" value="15:00" required>
 					<label for="text">Beschreibung der Veranstaltung: </label>
 					<input type="text" id="eventinfo" name="eventinfo" required>
-			</div>
-		<div>
-			<input type="submit" value="Speichern" name="speichern">
-		</div>
-		</form>
-<!--
-		Angeben:
-		"Büld"
-		"Name der Veranstaltung"
-		"Datum, Uhrzeit, Ort"
-		"Kurzbeschreibung"
-		"Tag"
 
-		Button: Speichern
-		 -> Datenbank DB Events
--->
+					<div>
+						<input type="submit" value="Speichern" name="speichern">
+					</div>
+				</form>
+			</div>
+
 			</div>
 		</div>
 	</body>
