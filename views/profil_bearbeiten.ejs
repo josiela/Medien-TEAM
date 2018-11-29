@@ -17,15 +17,8 @@
 				</div>
 			</div>
 			<div class="content">
+				<h2>Aktualisiere deine Infos</h2>
 				<form name="profil_bearbeiten" action="profil_bearbeiten" method="post">
-					<h2>Zeig uns wie du aussiehst!</h2>
-					<div>
-					<label>
-						<form method="post" enctype="multipart/form-data">
-						<label> Wählen Sie eine Bilddatei (*.png, *.jpg, etc.) von Ihrem Rechner aus.
-						<input name="datei" type="file" size="50" accept="image/*">
-					</label>
-				</div>
 				<div>
 					<label> Wohnort: <%= currentLocation%>
 					<select  name="wohnort" >
@@ -44,7 +37,7 @@
 							 <input id="info" type="text" name="info" value="<%= currentInfo%>">
 						</label>
 						<label>Email:
-							 <input id="email" type="text" name="email" value="<%= currentEmail%>">
+							 <input id="email" type="email" name="email" value="<%= currentEmail%>">
 						</label>
 						<div>
 							<input type="submit" value="speichern" />
