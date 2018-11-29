@@ -187,6 +187,7 @@ app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 		if (row != undefined) {
 				res.render('profil_bearbeiten', {
 					currentLocation: row.wohnort,
+					currentEmail: row.email,
 					currentInfo: row.info
 			});
 	} else {
@@ -235,9 +236,9 @@ app.post('/registrierung', function(req, res) {
 });
 
 app.post('/profil_bearbeiten', function(req, res) {
-	const { wohnort, info } = req.body;
+	const { wohnort, info, email } = req.body;
 	//	validierung
-	db.run(`UPDATE users SET wohnort='${wohnort}', info='${info}' WHERE id='${req.session.user}';`, function(err) {
+	db.run(`UPDATE users SET wohnort='${wohnort}', info='${info}', email='${email}' WHERE id='${req.session.user}';`, function(err) {
 		 if (err) {
 				console.log(err.message);
 		 }else{

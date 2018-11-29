@@ -17,25 +17,24 @@
 				</div>
 			</div>
 			<div class="content">
-				<h2><%= row.eventname%></h2>
+				<h2>Veranstaltung: <%= row.eventname%></h2>
 				<div>
-					<%= row.eventlocation%>
+					Location: <%= row.eventlocation%>
 				</div>
 				<div>
-					<%= row.date%>
+				 Datum:	<%= row.date%>
 				</div>
 				<div>
 					Uhrzeit: <%= row.time%>
 				</div>
 				<div>
-					<%= row.eventinfo%>
+					Beschreibung: <%= row.eventinfo%>
 				</div>
-
+ <br>
 				<div>
 					<form action="/merken" method="post">
-						<label>Zum Merken klicken:
-							<input type="submit" name="eventId" value="<%= row.id%>"/>
-						</label>
+						Hier kanns du dir dein Event merken:
+						<input type="submit" name="eventId" value="<%= row.id%>"/>
 					</form>
 				</div>
 
