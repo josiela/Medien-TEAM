@@ -41,7 +41,7 @@
 						    	<option value="Party"> Party </option>
 						    	<option value="Sport"> Sport </option>
 								</select>
-								<button type="submit"/>Suchen</button>
+								<button type="submit"/><img class="image"src="images/Search.png" alt="Suche" width="15px" height="15px"> Suchen</button>
 							</form>
 						</div>
 						<br>
@@ -64,7 +64,7 @@
 										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].date %></a></td>
 										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].time %></a></td>
 										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].eventtag %></a></td>
-										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><button>Zum Event</button></a>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><button>&#10095; Zum Event</button></a>
 									</tr>
 								<%}%>
 						</tbody>
@@ -95,8 +95,8 @@
 										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].date %></td>
 										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].time %></td>
 										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].eventtag %></td>
-										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><button>Zum Event</button></a>
-										<td><form action="deletethis" method="post"><button type="submit" name="deletethis" value="<%= userEvents[j].events_id %>">Von Merkliste löschen</button></form></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><button>&#10095; Zum Event</button></a>
+										<td><form action="deletethis" method="post"><button type="submit" name="deletethis" value="<%= userEvents[j].events_id %>">&#x2716; Von Merkliste löschen</button></form></td>
 									</tr>
 							<%}%>
 						</tbody>
@@ -104,7 +104,7 @@
 					<br>
 					<div>
 						<form action="delete" method="post">
-							<button type="submit" name="delete"/>Alles löschen</button>
+							<button type="submit" name="delete"/>&#x2716; Alles löschen</button>
 						</form>
 						<br>
 					</div>

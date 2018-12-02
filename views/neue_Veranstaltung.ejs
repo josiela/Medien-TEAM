@@ -18,49 +18,74 @@
 					</div>
 				</div>
 			</div>
-			<div class="content">
+			<div class="content" style="min-height: 75vh;">
 			<div>
 				<h1>Erstelle eine eigene Veranstaltung</h1>
 			</div>
 			<div>
 				<form name="neue_Veranstaltung" action="neue_Veranstaltung" method="post">
-					<label for="text">Name der Veranstaltung: </label>
-					<input type="text" id="eventname" name="eventname" required>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Pencil.png" alt="Name" width="25px" height="25px"><span class="tooltiptext">Name</span>
+						<label for="text">Name der Veranstaltung: </label>
+							<input type="text" id="eventname" name="eventname" required>
+					</div>
 					<br>
-					<label for="text">Ort der Veranstaltung: </label>
-					<select  name="eventlocation" required>
-				    	<option value="Hamburg-Mitte"> Hamburg-Mitte </option>
-				    	<option value="Altona">  Altona </option>
-				    	<option value="Eimsbüttel"> Eimsbüttel </option>
-				    	<option value="Hamburg-Nord"> Hamburg-Nord </option>
-							<option value="Wandsbek"> Wandsbek </option>
-							<option value="Bergedorf"> Bergedorf </option>
-							<option value="Harburg"> Harburg </option>
-					</select>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Location.png" alt="Location" width="30px" height="30px"><span class="tooltiptext">Location</span>
+						<label for="text">Ort der Veranstaltung: </label>
+							<select  name="eventlocation" required>
+				    		<option value="Hamburg-Mitte"> Hamburg-Mitte </option>
+				    		<option value="Altona">  Altona </option>
+				    		<option value="Eimsbüttel"> Eimsbüttel </option>
+				    		<option value="Hamburg-Nord"> Hamburg-Nord </option>
+								<option value="Wandsbek"> Wandsbek </option>
+								<option value="Bergedorf"> Bergedorf </option>
+								<option value="Harburg"> Harburg </option>
+							</select>
+					</div>
 					<br>
-					<label for="date">Datum: </label>
-					<input id="date" type="date" value="2018-11-01" name="date" required>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Date.png" alt="Date" width="25px" height="25px"><span class="tooltiptext">Datum</span>
+						<label for="date">Datum: </label>
+							<input id="date" type="date" value="2018-11-01" name="date" required>
+					</div>
 					<br>
-					<label for="time">Uhrzeit: </label>
-					<input id="time" type="time" name="time" value="15:00" required>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Time.png" alt="Time" width="25px" height="25px"><span class="tooltiptext">Zeit</span>
+						<label for="time">Uhrzeit: </label>
+							<input id="time" type="time" name="time" value="15:00" required>
+					</div>
 					<br>
-					<label for="text">Beschreibung der Veranstaltung: </label>
-					<input type="text" id="eventinfo" name="eventinfo" required>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Info.png" alt="Info" width="25px" height="25px"><span class="tooltiptext">Info</span>
+						<label for="text">Beschreibung der Veranstaltung: </label>
+							<input type="text" id="eventinfo" name="eventinfo" required>
+					</div>
 					<br>
-					<label for="text">Interessen-Tag: </label>
-					<select  name="eventtag" required>
-				    	<option value="Theater"> Theater </option>
-				    	<option value="Musik"> Musik </option>
-				    	<option value="Party"> Party </option>
-				    	<option value="Sport"> Sport </option>
-					</select>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Tag.png" alt="Tag" width="25px" height="25px"><span class="tooltiptext">Thema</span>
+						<label for="text">Interessen-Tag: </label>
+							<select  name="eventtag" required>
+				    		<option value="Theater"> Theater </option>
+				    		<option value="Musik"> Musik </option>
+				    		<option value="Party"> Party </option>
+				    		<option value="Sport"> Sport </option>
+							</select>
+					</div>
 					<br>
 					<br>
 					<div>
-						<button type="submit" value="Speichern" name="speichern">Speichern</button>
+						<button type="submit" value="Speichern" name="speichern">&#10004; Speichern</button>
 					</div>
 				</form>
 			</div>
+			</div>
+			<div>
+				<div class="contentfooter">
+					<div>
+						<p>Nina Paartz | Joseffa Steuernagel | Friederike Fröhlich | Angewandte Programmierung | WiSe 18/19</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

@@ -18,38 +18,54 @@
 					</div>
 				</div>
 			</div>
-			<div class="content">
-				<h2>Aktualisiere deine Infos</h2>
+			<div class="content" style="min-height: 75vh;">
+				<h2>Aktualisiere Deine Infos</h2>
 				<form name="profil_bearbeiten" action="profil_bearbeiten" method="post">
 				<div>
-					<label> Wohnort: <%= currentLocation%>
-					<select  name="wohnort" >
-							<option value="<%= currentLocation%>" hidden selected> <%= currentLocation%> </option>
-				    	<option value="Hamburg-Mitte"> Hamburg-Mitte </option>
-				    	<option value="Altona">  Altona </option>
-				    	<option value="Eimsbüttel"> Eimsbüttel </option>
-				    	<option value="Hamburg-Nord"> Hamburg-Nord </option>
-							<option value="Wandsbek"> Wandsbek </option>
-							<option value="Bergedorf"> Bergedorf </option>
-							<option value="Harburg"> Harburg </option>
-					</select>
-				</label>
-				<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Location.png" alt="Location" width="30px" height="30px"><span class="tooltiptext">Location</span>
+						<label> Wohnort: <%= currentLocation%>
+							<select  name="wohnort" >
+								<option value="<%= currentLocation%>" hidden selected> <%= currentLocation%> </option>
+				    		<option value="Hamburg-Mitte"> Hamburg-Mitte </option>
+				    		<option value="Altona">  Altona </option>
+				    		<option value="Eimsbüttel"> Eimsbüttel </option>
+				    		<option value="Hamburg-Nord"> Hamburg-Nord </option>
+								<option value="Wandsbek"> Wandsbek </option>
+								<option value="Bergedorf"> Bergedorf </option>
+								<option value="Harburg"> Harburg </option>
+							</select>
+						</label>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Info.png" alt="Info" width="25px" height="25px"><span class="tooltiptext">Info</span>
 						<label>Kurzbeschreibung:
 							 <input id="info" type="textarea" name="info" value="<%= currentInfo%>">
 						</label>
-						<br>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Mail.png" alt="Mail" width="30px" height="30px"><span class="tooltiptext">Mail</span>
 						<label>Email:
 							 <input id="email" type="email" name="email" value="<%= currentEmail%>">
 						</label>
-						<br>
-						<br>
-						<div>
-							<button type="submit" value="speichern">Speichern</button>
-						</div>
-					</form>
-				</div>
+					</div>
+					<br>
+					<br>
+					<div>
+						<button type="submit" value="speichern">&#10004; Speichern</button>
+					</div>
+				</form>
+			</div>
 		</div>
+		<div>
+			<div class="contentfooter">
+				<div>
+					<p>Nina Paartz | Joseffa Steuernagel | Friederike Fröhlich | Angewandte Programmierung | WiSe 18/19</p>
+				</div>
+			</div>
+	</div>
 	</div>
 	</body>
 </html>

@@ -18,24 +18,46 @@
 					</div>
 				</div>
 			</div>
-			<div class="content">
-				<h2> Dein Profil </h2>
-				<img class="image" src="images/ProfilPlaceholder.png" alt="Profilbild" width="200px" height="200px"><br>
-				<div>
-					Benutzername: <%= user%>
+			<div>
+				<img class="banner" src="/images/ProfilBackground.jpeg" alt="Profilbanner">
+			</div>
+			<div class="content flex">
+				<div class="col image-overlap">
+					<img class="image" src="/images/ProfilPlaceholder.png" alt="Profil" width="200px" height="200px">
+					<br>
 				</div>
-				<div>
-					E-Mail: <%= email%>
-				</div>
-				<div>
-					Wohnort: <%= location%>
-				</div>
-				<div>
-						Kurzbeschreibung: <%= info%>
-				</div>
+				<div class="col2">
+					<div class="heading-pos">
+						<h1>Dein Profil</h1>
+					</div>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Profil_black.png" alt="Name" width="30px" height="30px"><span class="tooltiptext">Benutzername</span>
+						<%= user%>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Mail.png" alt="Mail" width="30px" height="30px"><span class="tooltiptext">Mail</span>
+						<%= email%>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Location.png" alt="Location" width="30px" height="30px"><span class="tooltiptext">Wohnort</span>
+						<%= location%>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Info.png" alt="Info" width="30px" height="30px"><span class="tooltiptext">Info</span>
+						<%= info%>
+					</div>
 				<div>
 					<p>
-					<a href="/profil_bearbeiten"><button>Profil bearbeiten</button></a>
+					<a href="/profil_bearbeiten"><button> &#9998; Profil bearbeiten</button></a>
+				</div>
+			</div>
+		</div>
+			<div class="contentfooter">
+				<div>
+					<p>Nina Paartz | Joseffa Steuernagel | Friederike Fröhlich | Angewandte Programmierung | WiSe 18/19</p>
 				</div>
 			</div>
 		</div>

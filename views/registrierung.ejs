@@ -11,26 +11,39 @@
 				<a href="/start-login" class="tooltip"><img class="icons" src="images/Logo.png" alt="Logo"><span class="tooltiptext">Zur Startseite</span></a>
 				<a href="/start-login" class="tooltip header-text"><h1>Meet Your City</h1><span class="tooltiptext">Zur Startseite</span></a>
 			</div>
-			<div class="content">
+			<div class="content" style="min-height: 75vh;">
+				<h2>Schön, dass Du da bist!</h2>
+				<p>Bei Meet Your City kannst du sehen, was um dich herum passiert
+				<br>
+				und auch eigene Veranstaltungen erstellen.
+				<br>
+				Bitte gib uns für Dein Account ein paar Informationen:</p>
 				<form action="registrierung" method="post">
-					<p>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Profil_black.png" alt="Name" width="30px" height="30px"><span class="tooltiptext">Benutzername</span>
 						<label>Benutzername:
 							<input id="name" type="name" name="username" placeholder="Name (erforderlich)" required>
 						</label>
-					</p>
-					<p>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Password.png" alt="Password" width="30px" height="30px"><span class="tooltiptext">Passwort</span>
 						<label>Passwort:
 							<input type="password" name="password" placeholder="Passwort (erforderlich)" required>
 						</label>
-					</p>
-					<p>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Mail.png" alt="Mail" width="30px" height="30px"><span class="tooltiptext">Mail</span>
 						<label>E-Mail:
 							<input type="email" name="email" id="contact_email" placeholder="E-Mail (erforderlich)" required>
 						</label>
-					</p>
-					<p>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Location.png" alt="Location" width="30px" height="30px"><span class="tooltiptext">Location</span>
 						<label> Wohnort:
-						<select name="wohnort">
+							<select name="wohnort">
 								<option value="Hamburg-Mitte"> Hamburg-Mitte </option>
 								<option value="Altona">  Altona </option>
 								<option value="Eimsbüttel"> Eimsbüttel </option>
@@ -38,13 +51,18 @@
 								<option value="Wandsbek"> Wandsbek </option>
 								<option value="Bergedorf"> Bergedorf </option>
 								<option value="Harburg"> Harburg </option>
-						</select>
-					</label>
-					</p>
+							</select>
+						</label>
+					</div>
 					<div>
 						<button type="submit">Absenden</button>
 					</div>
 				</form>
+			</div>
+			<div class="contentfooter">
+				<div>
+					<p>Nina Paartz | Joseffa Steuernagel | Friederike Fröhlich | Angewandte Programmierung | WiSe 18/19</p>
+				</div>
 			</div>
 		</div>
 	</body>
