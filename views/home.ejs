@@ -7,100 +7,116 @@
 	</head>
 	<body>
 		<div>
-			<div class="header">
-				<div>
-					<a href="/"><img class="icons" src="images/Logo.png" alt="Logo"></a>
-					<a href="/" class="header-text"><h1>Meet Your City</h1></a>
-					<a href="/logout"><img class="icons header-right" src="images/Logout.png" alt="Logout" width="30px" height="30px"></a>
-					<a href="/profil"><img class="icons header-right" src="images/Profil_minimal.png" alt="Profil" width="30px" height="30px"></a>
-					<a href="/neue_Veranstaltung"><img class="icons header-right" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"></a>
+			<div>
+				<div class="header">
+					<div>
+						<a href="/" class="tooltip"><img class="icons" src="images/Logo.png" alt="Logo"><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/" class="tooltip header-text"><h1>Meet Your City</h1><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/logout" class="tooltip header-right"><img class="icons" src="images/Logout.png" alt="Logout" width="30px" height="30px"><span class="tooltiptext">Logout</span></a>
+						<a href="/profil" class="tooltip header-right"><img class="icons" src="images/Profil_minimal.png" alt="Profil" width="30px" height="30px"><span class="tooltiptext">Profil</span></a>
+						<a href="/neue_Veranstaltung" class="tooltip header-right"><img class="icons" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"><span class="tooltiptext">Event erstellen</span></a>
+					</div>
 				</div>
 			</div>
-
-			<div class="content">
-
-				<div>
-					<label>Suche über Tags: </label>
-					<form action="/suchergebnis" method="post">
-						<select  name="search" required>
-					    	<option value="Theater"> Theater </option>
-					    	<option value="Musik"> Musik </option>
-					    	<option value="Party"> Party </option>
-					    	<option value="Sport"> Sport </option>
-						</select>
-						<!--	<input id="search" name="search" type="text" placeholder="Suche"> -->
-							<input type="submit" value="Suchen"/>
-					</form>
-				</div>
-
-				<div>
-					<h1>Das passiert um dich herum!</h1>
-				</div>
-
 			<div>
-				<table>
-					<h2> Vorschläge</h2>
-					<tbody>
-						<tr>
-							<td>Eventname </td>
-							<td>Location</td>
-							<td>Datum</td>
-							<td>Uhrzeit</td>
-							<td>Tag</td>
-						</tr>
-					</tbody>
-
-					<tbody>
-						<% for (var i = 0; i < rows.length; i++) { %>
-							<tr>
-								<td> <a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get"><%= rows[i].eventname %></a></td>
-								<td> <%= rows[i].eventlocation %> </td>
-								<td> <%= rows[i].date %> </td>
-								<td> <%= rows[i].time %> </td>
-								<td> <%= rows[i].eventtag %> </td>
-							</tr>
-						<%}%>
-					</tbody>
-				</table>
+				<div class="slide">
+						<img src="images/slide1.jpeg" alt="Slide1">
+						<img src="images/slide2.jpeg" alt="Slide2">
+						<img src="images/slide3.jpg" alt="Slide3">
+						<img src="images/slide4.jpeg" alt="Slide4">
+						<img src="images/slide1.jpeg" alt="Slide1">
+						<div class="slidetext content">
+							<h1>Willkommen zurück!</h1>
+							<p>Klicke Dich durch die anstehenden Events oder plane selbst eine eigene Party.</p>
+						</div>
+				</div>
+				<div class="content">
+					<div>
+						<div>
+							<form action="/suchergebnis" method="post">
+								Suche über Tags:
+								<select  name="search" required>
+						    	<option value="Theater"> Theater </option>
+						    	<option value="Musik"> Musik </option>
+						    	<option value="Party"> Party </option>
+						    	<option value="Sport"> Sport </option>
+								</select>
+								<button type="submit"/>Suchen</button>
+							</form>
+						</div>
+						<br>
+						<table width="75%" style="text-align: left">
+							<thead>
+								<th height="40">Event</th>
+								<th height="40"></th>
+								<th height="40">Location</th>
+								<th height="40">Datum</th>
+								<th height="40">Uhrzeit</th>
+								<th height="40">Eventtag</th>
+								<th></th>
+							</thead>
+							<tbody>
+								<% for (var i = 0; i < rows.length; i++) { %>
+									<tr>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get"><img class="image" src="images/EventPlaceholder.png" alt="Eventbild" width="50px" height="50px"></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].eventname %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].eventlocation %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].date %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].time %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].eventtag %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><button>Zum Event</button></a>
+									</tr>
+								<%}%>
+						</tbody>
+					</table>
 			</div>
-
-			<br>
-
+		</div>
+		<br>
+		<div class="contentcolor">
 			<div>
-				<table>
+				<div class="content">
 					<h2>Deine gemerkten Events</h2>
-					<tbody>
-						<tr>
-							<td>Eventname </td>
-							<td>Location</td>
-							<td>Datum</td>
-							<td>Uhrzeit</td>
-							<td>Info</td>
-							<td>Tag</td>
-						</tr>
-					</tbody>
-
-					<tbody>
-						<% for (var j = 0; j < userEvents.length; j++) { %>
-							<tr>
-								<td><%= userEvents[j].eventname %> </td>
-								<td><%= userEvents[j].eventlocation %></td>
-								<td><%= userEvents[j].date %></td>
-								<td><%= userEvents[j].time %></td>
-								<td><%= userEvents[j].eventinfo %></td>
-								<td><%= userEvents[j].eventtag %></td>
-							</tr>
-						<%}%>
-					</tbody>
-				</table>
+					<table width="75%" style="text-align: left">
+						<thead>
+							<th height="40">Event</th>
+							<th height="40"></th>
+							<th height="40">Location</th>
+							<th height="40">Datum</th>
+							<th height="40">Uhrzeit</th>
+							<th height="40">Eventtag</th>
+							<th></th>
+						</thead>
+						<tbody>
+							<% for (var j = 0; j < userEvents.length; j++) { %>
+									<tr>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get"><img class="image" src="images/EventPlaceholder.png" alt="Eventbild" width="50px" height="50px"></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].eventname %> </td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].eventlocation %></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].date %></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].time %></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].eventtag %></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><button>Zum Event</button></a>
+										<td><form action="deletethis" method="post"><button type="submit" name="deletethis" value="<%= userEvents[j].events_id %>">Von Merkliste löschen</button></form></td>
+									</tr>
+							<%}%>
+						</tbody>
+					</table>
+					<br>
+					<div>
+						<form action="delete" method="post">
+							<button type="submit" name="delete"/>Alles löschen</button>
+						</form>
+						<br>
+					</div>
+				</div>
 			</div>
-
-			<div>
-				<form action="delete" method="post">
-					<input type="submit" name="delete" value="Gemerkte Events löschen"/>
-				</form>
+		</div>
+		<div>
+			<div class="contentfooter">
+				<div>
+					<p>Nina Paartz | Joseffa Steuernagel | Friederike Fröhlich | Angewandte Programmierung | WiSe 18/19</p>
+				</div>
 			</div>
-
 		</div>
 	</body>
 </html>

@@ -7,25 +7,26 @@
 	</head>
 	<body>
 		<div>
-			<div class="header">
-				<div>
-					<a href="/"><img class="icons" src="images/Logo.png" alt="Logo"></a>
-					<a href="/" class="header-text"><h1>Meet Your City</h1></a>
-					<a href="/logout"><img class="icons header-right" src="images/Logout.png" alt="Logout" width="30px" height="30px"></a>
-					<a href="/profil"><img class="icons header-right" src="images/Profil_minimal.png" alt="Profil" width="30px" height="30px"></a>
-					<a href="/neue_Veranstaltung"><img class="icons header-right" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"></a>
+			<div>
+				<div class="header">
+					<div>
+						<a href="/" class="tooltip"><img class="icons" src="images/Logo.png" alt="Logo"><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/" class="tooltip header-text"><h1>Meet Your City</h1><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/logout" class="tooltip header-right"><img class="icons" src="images/Logout.png" alt="Logout" width="30px" height="30px"><span class="tooltiptext">Logout</span></a>
+						<a href="/profil" class="tooltip header-right"><img class="icons" src="images/Profil_minimal.png" alt="Profil" width="30px" height="30px"><span class="tooltiptext">Profil</span></a>
+						<a href="/neue_Veranstaltung" class="tooltip header-right"><img class="icons" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"><span class="tooltiptext">Event erstellen</span></a>
+					</div>
 				</div>
 			</div>
-
 			<div class="content">
 			<div>
 				<h1>Erstelle eine eigene Veranstaltung</h1>
 			</div>
-
 			<div>
 				<form name="neue_Veranstaltung" action="neue_Veranstaltung" method="post">
 					<label for="text">Name der Veranstaltung: </label>
 					<input type="text" id="eventname" name="eventname" required>
+					<br>
 					<label for="text">Ort der Veranstaltung: </label>
 					<select  name="eventlocation" required>
 				    	<option value="Hamburg-Mitte"> Hamburg-Mitte </option>
@@ -36,12 +37,16 @@
 							<option value="Bergedorf"> Bergedorf </option>
 							<option value="Harburg"> Harburg </option>
 					</select>
+					<br>
 					<label for="date">Datum: </label>
 					<input id="date" type="date" value="2018-11-01" name="date" required>
+					<br>
 					<label for="time">Uhrzeit: </label>
 					<input id="time" type="time" name="time" value="15:00" required>
+					<br>
 					<label for="text">Beschreibung der Veranstaltung: </label>
 					<input type="text" id="eventinfo" name="eventinfo" required>
+					<br>
 					<label for="text">Interessen-Tag: </label>
 					<select  name="eventtag" required>
 				    	<option value="Theater"> Theater </option>
@@ -49,13 +54,13 @@
 				    	<option value="Party"> Party </option>
 				    	<option value="Sport"> Sport </option>
 					</select>
-
+					<br>
+					<br>
 					<div>
-						<input type="submit" value="Speichern" name="speichern">
+						<button type="submit" value="Speichern" name="speichern">Speichern</button>
 					</div>
 				</form>
 			</div>
-
 			</div>
 		</div>
 	</body>

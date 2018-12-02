@@ -143,10 +143,11 @@ app.get('/start-login', function(req, res) {
 	res.render('start-login');
 });
 
-// Events auf der Startseite anzeigen
+// Gemerkte UserEvents auf der Startseite anzeigen
 app.get('/', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
 		let userEvents = {};
+		let message = "Keine Events gemerkt";
 
 		db.all(`SELECT DISTINCT users_events.events_id, users_events.user_id, events.eventname, events.eventlocation, events.date, events.time, events.eventinfo, events.eventtag FROM users_events INNER JOIN events ON users_events.events_id=events.id WHERE users_events.user_id=${req.session.user} `, function(err, row) {
 			if(err){
@@ -155,7 +156,10 @@ app.get('/', requiresLogin, function(req, res) {
 			if (row != undefined) {
 				userEvents = row;
 			} else {
-					console.log("keine events")
+					console.log("Keine Events gemerkt")
+					res.render('home', {
+						'message': message,
+					});
 				}
 		});
 
@@ -168,7 +172,6 @@ app.get('/', requiresLogin, function(req, res) {
 				res.render('home',  {
 					'userEvents': userEvents,
 					'rows': rows,
-					//'userEvents': kj
 				});
 			}
 		});
@@ -225,6 +228,25 @@ app.post('/neue_Veranstaltung', function(req, res) {
 	 });
 });
 
+//Veranstaltung löschen
+app.post('/deleteEvent', function(req,res){
+	const sql =`DELETE FROM events WHERE id=(${req.body["delete"]})`;
+
+	db.run(sql, function(err) {
+		if (err){
+			console.log(err.message);
+		} else {
+				console.log("Event gelöscht")
+				res.redirect('/');
+		}
+	});
+
+	const sql2 = `SELECT * FROM users_events`
+	db.all(sql2, function(err, rows) {
+		console.log(rows);
+	});
+	
+});
 
 app.get('/neue_Veranstaltung', requiresLogin, function(req, res) {
 	res.render('neue_Veranstaltung');
@@ -326,7 +348,7 @@ app.post('/merken', function(req, res) {
 		if (err){
 			console.log(err.message);
 		} else {
-				console.log("hallo123")
+				console.log("Event hinzugefügt")
 				res.redirect('/');
 		}
 	});
@@ -335,9 +357,23 @@ app.post('/merken', function(req, res) {
 	db.all(sql2, function(err, rows) {
 		console.log(rows);
 	});
-})
+});
 
-// Events löschen
+//Ausgewähltes Event löschen
+app.post('/deletethis', function(req, res){
+	const sql = `DELETE FROM users_events WHERE user_id=(${req.session.user}) AND events_id=(${req.body["deletethis"]})`;
+
+	db.run(sql, function(err) {
+		if (err){
+			console.log(err.message);
+		} else {
+				console.log("Event gelöscht")
+				res.redirect('/');
+		}
+	});
+});
+
+// Alle Events löschen
 app.post('/delete', function(req, res){
 	const sql = `DELETE FROM users_events`;
 

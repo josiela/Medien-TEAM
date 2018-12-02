@@ -7,17 +7,23 @@
 	</head>
 	<body>
 		<div>
-			<div class="header">
-				<div>
-					<a href="/"><img class="icons" src="/images/Logo.png" alt="Logo"></a>
-					<a href="/" class="header-text"><h1>Meet Your City</h1></a>
-					<a href="/logout"><img class="icons header-right" src="/images/Logout.png" alt="Logout" width="30px" height="30px"></a>
-					<a href="/profil"><img class="icons header-right" src="/images/Profil_minimal.png" alt="Profil" width="30px" height="30px"></a>
-					<a href="/neue_Veranstaltung"><img class="icons header-right" src="/images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"></a>
+			<div>
+				<div class="header">
+					<div>
+						<a href="/" class="tooltip"><img class="icons" src="/images/Logo.png" alt="Logo"><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/" class="tooltip header-text"><h1>Meet Your City</h1><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/logout" class="tooltip header-right"><img class="icons" src="/images/Logout.png" alt="Logout" width="30px" height="30px"><span class="tooltiptext">Logout</span></a>
+						<a href="/profil" class="tooltip header-right"><img class="icons" src="/images/Profil_minimal.png" alt="Profil" width="30px" height="30px"><span class="tooltiptext">Profil</span></a>
+						<a href="/neue_Veranstaltung" class="tooltip header-right"><img class="icons" src="/images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"><span class="tooltiptext">Event erstellen</span></a>
+					</div>
 				</div>
 			</div>
 			<div class="content">
-				<h2>Veranstaltung: <%= row.eventname%></h2>
+				<h1><%= row.eventname%></h1>
+				<div>
+					<img class="image" src="/images/EventPlaceholder.png" alt="Eventbild" width="200px" height="200px">
+					<br>
+				</div>
 				<div>
 					Location: <%= row.eventlocation%>
 				</div>
@@ -33,22 +39,17 @@
 				<div>
 					Tag: <%= row.eventtag%>
 				</div>
- <br>
+ 				<br>
 				<div>
 					<form action="/merken" method="post">
-						Merken:<br>
-						<button type="submit" name="eventId" value="<%= row.id%>" style="background-color:transparent; border-color:transparent;">
-  						<img class="icons header-left" src="/images/book.png" alt="Merken" width="25px" height="25px"/>
-						</button>
+						<button type="submit" name="eventId" value="<%= row.id%>">&#9733; Auf Merkliste setzen</button>
 					</form>
 				</div>
-
-				<br>
-
 				<div>
-	        <a href="/">Zurück</a>
-	      </div>
-
+					<form action="/deleteEvent" method="post">
+						<button type="submit" name="delete" value="<%= row.id%>">Event löschen</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>
