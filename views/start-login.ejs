@@ -20,7 +20,7 @@
 						<img src="images/slide5.jpeg" alt="Slide5">
 						<div class="slidetext content">
 							<h3>Lerne Deine Stadt kennen!</h3>
-							<p>Erstelle Dir einen Account und plane deine Events</p>
+							<p>Erstelle Dir einen Account und plane Deine kommenden Events</p>
 							<a href="/registrierung"><button>Hier Registrieren</button></a>
 							<br>
 						</div>
@@ -29,15 +29,17 @@
 			<div class="content">
 	 			<h3> Bist Du schon registriert? Log dich hier ein:</h3>
 				<form action="sendLogin" method="post">
-					<div>
-						Benutzername: <input type="text" name="username">
+					<div class=" tooltip margin-between">
+						<img class="icon-pos2" src="/images/Profil_black.png" alt="Name" width="30px" height="30px"><span class="tooltiptext">Benutzername</span>
+						<input type="text" name="username">
 					</div>
 					<br>
-					<div>
-						Passwort: <input type="password" name="password">
+					<div class=" tooltip margin-between">
+						<img class="icon-pos2" src="/images/Password.png" alt="Password" width="30px" height="30px"><span class="tooltiptext">Passwort</span>
+						<input type="password" name="password">
 					</div>
 					<br>
-					<div>
+					<div style="margin-top: 10px; margin-bottom: 30px;">
 						<button type="submit">Login</button>
 					</div>
 				</form>

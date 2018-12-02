@@ -138,8 +138,8 @@ button:hover {
     visibility: hidden;
     width: auto;
     top: 100%;
-    left: 50%;
-    margin-left: -20px;
+
+    margin-left: -30px;
     background-color: #ffffff;
     color: #ff6600;
     font-weight: 600;
@@ -253,6 +253,12 @@ margin-left: 400%;
 .icon-pos {
   position: relative;
   top: 5px;
+  right: 5px;
+}
+
+.icon-pos2 {
+  position: relative;
+  top: 10px;
   right: 5px;
 }
 
