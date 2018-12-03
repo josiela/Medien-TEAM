@@ -7,10 +7,6 @@ const express = require('express');
 const app = express();
 
 app.use(express.static(__dirname + '/public'));
-// Keine Ahnung was das ist, aber das brauchen wir vllt
-/*const http = require("http");
-const path = require("path");
-const fs = require("fs");*/
 
 // Body-Parser
 const bodyParser= require('body-parser');
@@ -19,11 +15,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 // EJS
 app.engine('.ejs', require('ejs').__express);
 app.set('view engine', 'ejs');
-
-// Public öffentlich machen
-// app.get("/", express.static(path.join(__dirname, "./public")));
-// const fileUpload = require('express-fileupload');
-//app.use(fileUpload());
 
 //CSS Ordner einbinden
 app.use(express.static(__dirname + "/style"));
@@ -46,60 +37,10 @@ app.listen(3000, function(){
 
 let requiresLogin = function(req, res, next) {
   if (!req.session.user) {
-		res.redirect('/start-login');
+		res.redirect('/');
   }
   return next();
 };
-
-//------------------BILD HOCHLADEN---------------------------//
-/* const multer = require("multer");
-
-const handleError = (err, res) => {
-  res
-    .status(500)
-    .contentType("text/plain")
-    .end("Oops! Something went wrong!");
-};
-
-const upload = multer({
-  dest: "/path/to/temporary/directory/to/store/uploaded/files"
-  // you might also want to set some limits: https://github.com/expressjs/multer#limits
-});
-
-app.post(
-  "/upload",
-  upload.single("file" // name attribute of <file> element in your form),
- (req, res) => {
-    const tempPath = req.file.path;
-    const targetPath = path.join(__dirname, "./uploads/image.png");
-
-    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
-      fs.rename(tempPath, targetPath, err => {
-        if (err) return handleError(err, res);
-
-        res
-          .status(200)
-          .contentType("text/plain")
-          .end("File uploaded!");
-      });
-    } else {
-      fs.unlink(tempPath, err => {
-        if (err) return handleError(err, res);
-
-        res
-          .status(403)
-          .contentType("text/plain")
-          .end("Only .png files are allowed!");
-      });
-    }
-  }
-);
-
-app.get("/image.png", (req, res) => {
-  res.sendFile(path.join(__dirname, "./uploads/image.png"));
-}); */
-
-//----------------------------------------------------------//
 
 //------------Sessionvariablen---------------//
 
@@ -117,7 +58,7 @@ app.post('/sendLogin', function(req, res) {
 				//hat geklappt
 				//Sessionvariable setzen
 				req.session['user'] = row.id;
-				res.redirect('/');
+				res.redirect('/home');
 			}else{
 				//hat nicht geklappt weil password falsch
 				res.redirect('/loginerror');
@@ -134,17 +75,17 @@ app.get('/logout', function(req, res){
 	req.session.destroy(function (err) {
 	  if (err) return next(err)
 		req.session = null;
-	  res.redirect('/start-login');
+	  res.redirect('/');
 	});
 });
 //==========================================//
 
-app.get('/start-login', function(req, res) {
+app.get('/', function(req, res) {
 	res.render('start-login');
 });
 
 // Gemerkte UserEvents auf der Startseite anzeigen
-app.get('/', requiresLogin, function(req, res) {
+app.get('/home', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
 		let userEvents = {};
 		let message = "Keine Events gemerkt";
@@ -223,7 +164,7 @@ app.post('/neue_Veranstaltung', function(req, res) {
 		 if (err) {
 			 console.log(err.message);
 		 }else{
-		 		res.redirect('/');
+		 		res.redirect('/home');
 			}
 	 });
 });
@@ -237,7 +178,7 @@ app.post('/deleteEvent', function(req,res){
 			console.log(err.message);
 		} else {
 				console.log("Event gelöscht")
-				res.redirect('/');
+				res.redirect('/home');
 		}
 	});
 
@@ -245,7 +186,7 @@ app.post('/deleteEvent', function(req,res){
 	db.all(sql2, function(err, rows) {
 		console.log(rows);
 	});
-	
+
 });
 
 app.get('/neue_Veranstaltung', requiresLogin, function(req, res) {
@@ -271,23 +212,6 @@ app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 	}
 	});
 });
-
-//Foto - Upload
- /* app.get(['/upload'],(req,res)=>{
-	res.render('upload');
-})
-app.post('/upload', (req,res)=>{
-	if(Object.keys(req.files).length == 0){
-		return res.status(400).send('No files were uploaded.');
-	}
-
-	let sampleFile = req.files.sampleFile;
-	sampleFile.mv('image.png',(err)=>{
-		if(err)
-			return res.status(500).send(err);
-		res.redirect('profil')
-	});
-}); */
 
 //Infos werden geholt und in der Sitzung gespeichert
 app.get('/profil', requiresLogin, function(req, res) {
@@ -349,7 +273,7 @@ app.post('/merken', function(req, res) {
 			console.log(err.message);
 		} else {
 				console.log("Event hinzugefügt")
-				res.redirect('/');
+				res.redirect('/home');
 		}
 	});
 
@@ -368,7 +292,7 @@ app.post('/deletethis', function(req, res){
 			console.log(err.message);
 		} else {
 				console.log("Event gelöscht")
-				res.redirect('/');
+				res.redirect('/home');
 		}
 	});
 });
@@ -382,7 +306,7 @@ app.post('/delete', function(req, res){
 			console.log(err.message);
 		} else {
 				console.log("Tabelle gelöscht")
-				res.redirect('/');
+				res.redirect('/home');
 		}
 	});
 })
@@ -398,7 +322,7 @@ app.post('/erste_schritte', function(req, res) {
 			 }
 	 	});
  	});
-	res.redirect('/');
+	res.redirect('/home');
 });
 
 	//=======================================//
