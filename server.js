@@ -104,7 +104,6 @@ app.get('/registrierung', function(req, res) {
 app.get('/home', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
 		let userEvents = {};
-		let message = "Keine Events gemerkt";
 
 		db.all(`SELECT DISTINCT users_events.events_id, users_events.user_id, events.eventname, events.eventlocation, events.date, events.time, events.eventinfo, events.eventtag FROM users_events INNER JOIN events ON users_events.events_id=events.id WHERE users_events.user_id=${req.session.user} `, function(err, row) {
 			if(err){
@@ -114,10 +113,7 @@ app.get('/home', requiresLogin, function(req, res) {
 				userEvents = row;
 			} else {
 					console.log("Keine Events gemerkt")
-					res.render('home', {
-						'message': message,
-					});
-				}
+					};
 		});
 
 		db.all(sql, function(err, rows){
