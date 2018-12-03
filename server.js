@@ -84,6 +84,22 @@ app.get('/', function(req, res) {
 	res.render('start-login');
 });
 
+app.get('/loginerror', function(req, res) {
+	res.render('loginerror');
+});
+
+app.get('/neue_Veranstaltung', requiresLogin, function(req, res) {
+	res.render('neue_Veranstaltung');
+});
+
+app.get('/erste_schritte', requiresLogin, function(req, res) {
+	res.render('erste_schritte');
+})
+
+app.get('/registrierung', function(req, res) {
+	res.render('registrierung');
+});
+
 // Gemerkte UserEvents auf der Startseite anzeigen
 app.get('/home', requiresLogin, function(req, res) {
 		const sql = 'SELECT * FROM events';
@@ -135,10 +151,6 @@ app.post("/suchergebnis", requiresLogin, function(req, res) {
 	});
 })
 
-app.get('/loginerror', function(req, res) {
-	res.render('loginerror');
-});
-
 // Veranstaltungen auf allgemeiner Veranstaltungsunterseite anzeigen
 app.get('/veranstaltung_unterseite/:id', requiresLogin, function(req, res) {
 	const sql = 'SELECT * FROM events WHERE id ='+req.params.id;
@@ -189,14 +201,6 @@ app.post('/deleteEvent', function(req,res){
 
 });
 
-app.get('/neue_Veranstaltung', requiresLogin, function(req, res) {
-	res.render('neue_Veranstaltung');
-});
-
-app.get('/erste_schritte', requiresLogin, function(req, res) {
-	res.render('erste_schritte');
-})
-
 app.get('/profil_bearbeiten', requiresLogin, function(req, res) {
 	db.get(`SELECT * FROM users WHERE id='${req.session.user}'`, function(err, row) {
 		if(err){
@@ -229,11 +233,6 @@ app.get('/profil', requiresLogin, function(req, res) {
 	} else {
 	}
 	});
-});
-
-
-app.get('/registrierung', function(req, res) {
-	res.render('registrierung');
 });
 
 
