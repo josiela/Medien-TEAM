@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Dein Profil</title>
+		<link rel="stylesheet" type="text/css" href="/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+		<link rel="icon" type="image/png" href="images/Favicon.png">
+	</head>
+	<body>
+		<div>
+			<div>
+				<div class="header">
+					<div>
+						<a href="/home" class="tooltip"><img class="icons" src="images/Logo.png" alt="Logo"><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/home" class="tooltip header-text"><h1>Meet Your City</h1><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/logout" class="tooltip header-right"><img class="icons" src="images/Logout.png" alt="Logout" width="30px" height="30px"><span class="tooltiptext">Logout</span></a>
+						<a href="/profil" class="tooltip header-right"><img class="icons" src="images/Profil_minimal.png" alt="Profil" width="30px" height="30px"><span class="tooltiptext">Profil</span></a>
+						<a href="/neue_Veranstaltung" class="tooltip header-right"><img class="icons" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"><span class="tooltiptext">Event erstellen</span></a>
+					</div>
+				</div>
+			</div>
+			<div>
+				<img class="banner" src="/images/ProfilBackground.jpeg" alt="Profilbanner">
+			</div>
+			<div class="content flex">
+				<div class="col image-overlap">
+					<img class="image" src="/images/ProfilPlaceholder.png" alt="Profil" width="200px" height="200px">
+					<br>
+				</div>
+				<div class="col2">
+					<div class="heading-pos">
+						<h1>Dein Profil</h1>
+					</div>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Profil_black.png" alt="Name" width="30px" height="30px"><span class="tooltiptext">Benutzername</span>
+						<%= user%>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Mail.png" alt="Mail" width="30px" height="30px"><span class="tooltiptext">Mail</span>
+						<%= email%>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Location.png" alt="Location" width="30px" height="30px"><span class="tooltiptext">Wohnort</span>
+						<%= location%>
+					</div>
+					<br>
+					<div class=" tooltip margin-between">
+						<img class="icon-pos" src="/images/Info.png" alt="Info" width="30px" height="30px"><span class="tooltiptext">Info</span>
+						<%= info%>
+					</div>
+				<div>
+					<p>
+					<a href="/profil_bearbeiten"><button> &#9998; Profil bearbeiten</button></a>
+				</div>
+			</div>
+		</div>
+			<div class="contentfooter">
+				<div>
+					<p>Nina Paartz | Joseffa Steuernagel | Friederike Fröhlich | Angewandte Programmierung | WiSe 18/19</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

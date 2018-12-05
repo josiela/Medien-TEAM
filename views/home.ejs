@@ -2,27 +2,123 @@
 <html>
 	<head>
 		<title>Home</title>
+		<link rel="stylesheet" type="text/css" href="/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+		<link rel="icon" type="image/png" href="images/Favicon.png">
 	</head>
-
 	<body>
-		<form action="registrierung" method="post">
-		<p>
-			<label>Bemutzername:
-				<input id="name" type="name" name="user">
-			</label>
-		</p>
-		<p>
-			<label>Passwort:
-				<input type="password" name="password">
-			</label>
-		</p>
-		<p>
-			<label>E-Mail:
-				<input type="email" id="contact_email">
-			</label>
-		</p>
-
-			<input type="submit" value="Registrierung" name="submit">
-		</form>
+		<div>
+			<div>
+				<div class="header">
+					<div>
+						<a href="/home" class="tooltip"><img class="icons" src="images/Logo.png" alt="Logo"><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/home" class="tooltip header-text"><h1>Meet Your City</h1><span class="tooltiptext">Zur Startseite</span></a>
+						<a href="/logout" class="tooltip header-right"><img class="icons" src="images/Logout.png" alt="Logout" width="30px" height="30px"><span class="tooltiptext">Logout</span></a>
+						<a href="/profil" class="tooltip header-right"><img class="icons" src="images/Profil_minimal.png" alt="Profil" width="30px" height="30px"><span class="tooltiptext">Profil</span></a>
+						<a href="/neue_Veranstaltung" class="tooltip header-right"><img class="icons" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"><span class="tooltiptext">Event erstellen</span></a>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="slide">
+						<img src="images/slide1.jpeg" alt="Slide1">
+						<img src="images/slide2.jpeg" alt="Slide2">
+						<img src="images/slide3.jpg" alt="Slide3">
+						<img src="images/slide4.jpeg" alt="Slide4">
+						<img src="images/slide1.jpeg" alt="Slide1">
+						<div class="slidetext content">
+							<h1>Willkommen!</h1>
+							<p>Klicke Dich durch die anstehenden Events oder plane selbst eine eigene Party</p>
+						</div>
+				</div>
+				<div class="content">
+					<div>
+						<h2 style="margin-top: -5px;">Alle anstehenden Events</h2>
+						<div>
+							<form action="/suchergebnis" method="post">
+								Suche über Tags:
+								<select  name="search" required>
+						    	<option value="Theater"> Theater </option>
+						    	<option value="Musik"> Musik </option>
+						    	<option value="Party"> Party </option>
+						    	<option value="Sport"> Sport </option>
+								</select>
+								<button type="submit"/><img class="image"src="images/Search.png" alt="Suche" width="15px" height="15px"> Suchen</button>
+							</form>
+						</div>
+						<br>
+						<table width="80%" style="text-align: left">
+							<thead>
+								<th height="40">Event</th>
+								<th height="40"></th>
+								<th height="40">Location</th>
+								<th height="40">Datum</th>
+								<th height="40">Uhrzeit</th>
+								<th height="40">Eventtag</th>
+								<th></th>
+							</thead>
+							<tbody>
+								<% for (var i = 0; i < rows.length; i++) { %>
+									<tr>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get"><img class="image" src="images/EventPlaceholder.png" alt="Eventbild" width="50px" height="50px"></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].eventname %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].eventlocation %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].date %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].time %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><%= rows[i].eventtag %></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + rows[i].id %>" method="get" style="color:#000000"><button>&#10095; Zum Event</button></a>
+									</tr>
+								<%}%>
+						</tbody>
+					</table>
+			</div>
+		</div>
+		<br>
+		<div class="contentcolor">
+			<div>
+				<div class="content">
+					<h2>Deine gemerkten Events</h2>
+					<table width="80%" style="text-align: left">
+						<thead>
+							<th height="40">Event</th>
+							<th height="40"></th>
+							<th height="40">Location</th>
+							<th height="40">Datum</th>
+							<th height="40">Uhrzeit</th>
+							<th height="40">Eventtag</th>
+							<th></th>
+						</thead>
+						<tbody>
+							<% for (var j = 0; j < userEvents.length; j++) { %>
+									<tr>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get"><img class="image" src="images/EventPlaceholder.png" alt="Eventbild" width="50px" height="50px"></a></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].eventname %> </td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].eventlocation %></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].date %></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].time %></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><%= userEvents[j].eventtag %></td>
+										<td><a href="<%= "/veranstaltung_unterseite/" + userEvents[j].events_id %>" method="get" style="color:#000000"><button>&#10095; Zum Event</button></a>
+										<td><form action="deletethis" method="post"><button type="submit" name="deletethis" value="<%= userEvents[j].events_id %>">&#x2716; Von Merkliste löschen</button></form></td>
+									</tr>
+							<%}%>
+						</tbody>
+					</table>
+					<br>
+					<div>
+						<form action="delete" method="post">
+							<button type="submit" name="delete"/>&#x2716; Merkliste löschen</button>
+						</form>
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="contentfooter">
+				<div>
+					<p>Nina Paartz | Joseffa Steuernagel | Friederike Fröhlich | Angewandte Programmierung | WiSe 18/19</p>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

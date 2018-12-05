@@ -1,6 +1,7 @@
-Notwendige Installationen für die Funktion:
+﻿Notwendige Installationen für die Funktion:
 
 Node.js und Sqlite müssen vorliegen.
+Vor dem ersten Mal Server-Starten: node ./bootstrap
 Node.js hier: https://nodejs.org/de/download/
 Sqlite hier: https://www.sqlite.org/download.html
 -> Bei Sqlite den dritten Link unter "Precompiled Binaries for Windows" auswählen
@@ -31,6 +32,6 @@ npm install nodemon --save-dev
 npm install sqlite3 --save
 npm install bcrypt --save
 npm install express-session --save
-npm install --save express-fileupload
 
-node ./bootstrap vor dem Starten der server.js (Muss nur ein einziges Mal ausgeführt werden)
+Zum Starten der Anwendung zuerst node ./bootstrap
+Dann erst node server.js

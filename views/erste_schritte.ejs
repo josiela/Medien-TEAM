@@ -2,25 +2,58 @@
 <html>
 	<head>
 		<title>Erste Schritte</title>
+		<link rel="stylesheet" type="text/css" href="/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+		<link rel="icon" type="image/png" href="images/Favicon.png">
 	</head>
 	<body>
-		<form action="registrierung" method="post">
-		<p>
-			<label>Benutzername:
-				<input id="name" type="name" name="user">
-			</label>
-		</p>
-		<p>
-			<label>Passwort:
-				<input type="password" name="password">
-			</label>
-		</p>
-		<p>
-			<label>E-Mail:
-				<input type="email" id="contact_email">
-			</label>
-		</p>
-			<input type="submit" value="Registrierung" name="submit">
-		</form>
+		<div class="header">
+			<div>
+				<a href="/home" class="tooltip"><img class="icons" src="images/Logo.png" alt="Logo"><span class="tooltiptext">Zur Startseite</span></a>
+				<a href="/home" class="tooltip header-text"><h1>Meet Your City</h1><span class="tooltiptext">Zur Startseite</span></a>
+				<a href="/logout" class="tooltip header-right"><img class="icons" src="images/Logout.png" alt="Logout" width="30px" height="30px"><span class="tooltiptext">Logout</span></a>
+				<a href="/profil" class="tooltip header-right"><img class="icons" src="images/Profil_minimal.png" alt="Profil" width="30px" height="30px"><span class="tooltiptext">Profil</span></a>
+				<a href="/neue_Veranstaltung" class="tooltip header-right"><img class="icons" src="images/NewEvent.png" alt="Neue Veranstaltung" width="30px" height="30px"><span class="tooltiptext">Event erstellen</span></a>
+			</div>
+		</div>
+			<div class="content" style="min-height: 75vh;">
+				<div>
+					<h2>Los geht's!</h2>
+					<p>
+						Unsere Events werden nach Tags geordnet.
+						<br>
+						Wofür interessierst du dich?
+					</p>
+				</div>
+			<div>
+				<form name="erste_schritte" action="erste_schritte" method="post">
+					<div>
+        		<input type="checkbox" value="0" id="check1" name="interesse[]"/>
+        		<label><span>Theater</span></label>
+    			</div>
+					<div>
+        		<input type="checkbox" value="1" id="check2" name="interesse[]"/>
+        		<label><span>Musik</span></label>
+    			</div>
+					<div>
+        		<input type="checkbox" value="2" id="check3" name="interesse[]"/>
+        		<label><span>Party</span></label>
+    			</div>
+					<div>
+        		<input type="checkbox" value="3" id="check4" name="interesse[]"/>
+        		<label><span>Sport</span></label>
+    			</div>
+					<br>
+					<button type="submit">&#10004; Fertig</button>
+				</form>
+			</div>
+		</div>
+		<div>
+			<div class="contentfooter">
+				<div class="content">
+					<p>Nina Paartz | Joseffa Steuernagel | Friederike Fröhlich | Angewandte Programmierung | WiSe 18/19</p>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
